@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
+import BasicForm from "./basicForm";
 import styled from "styled-components";
 
 import { Formik } from "formik";
-import { Form, InputGroup, Button, Row, Col } from "react-bootstrap";
+import { Form, Row, Col } from "react-bootstrap";
 
 import * as yup from "yup";
 
@@ -17,18 +18,29 @@ const LoginFormDiv = styled.div`
 
 const inputWidth = 6;
 
+const usernameValid = "Please enter a valid email";
+const usernameRequired = "Username is required";
+
+const passwordRequired = "Password is required";
+
 const schema = yup.object({
   username: yup
     .string()
-    .email("Please enter a valid email")
-    .required("Username is required"),
-  password: yup.string().required("Password is required")
+    .email(usernameValid)
+    .required(usernameRequired),
+  password: yup.string().required(passwordRequired)
 });
 
-class LoginForm extends Component {
-  state = {};
+class LoginForm extends BasicForm {
+  state = {
+    initialValues: {
+      username: "",
+      password: ""
+    }
+  };
 
   render() {
+    const { initialValues } = this.state;
     return (
       <Row>
         <Col md={7} />
@@ -41,10 +53,7 @@ class LoginForm extends Component {
               <Formik
                 validationSchema={schema}
                 onSubmit={console.log}
-                initialValues={{
-                  username: "",
-                  password: ""
-                }}
+                initialValues={initialValues}
               >
                 {({
                   handleSubmit,
@@ -54,72 +63,49 @@ class LoginForm extends Component {
                   touched,
                   isValid,
                   errors
-                }) => (
-                  <Form noValidate onSubmit={handleSubmit}>
-                    <Row noGutters className="justify-content-center">
-                      <Form.Group
-                        as={Col}
-                        xs={inputWidth}
-                        controlId="usernameValidation"
-                      >
-                        <InputGroup>
-                          <InputGroup.Prepend>
-                            <InputGroup.Text id="usernamePrepend">
-                              <i className="fa fa-user" />
-                            </InputGroup.Text>
-                          </InputGroup.Prepend>
-                          <Form.Control
-                            type="text"
-                            placeholder="Username"
-                            name="username"
-                            value={values.username}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={touched.username && !!errors.username}
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            {errors.username}
-                          </Form.Control.Feedback>
-                        </InputGroup>
-                      </Form.Group>
-                    </Row>
+                }) => {
+                  const commonAttrs = [
+                    values,
+                    touched,
+                    errors,
+                    handleChange,
+                    handleBlur
+                  ];
+                  return (
+                    <Form noValidate onSubmit={handleSubmit}>
+                      <Row noGutters className="justify-content-center">
+                        <Col xs={inputWidth}>
+                          {this.renderInput(
+                            null,
+                            "username",
+                            ...commonAttrs,
+                            null,
+                            "text",
+                            null,
+                            <i className="fa fa-user" />
+                          )}
+                        </Col>
+                      </Row>
 
-                    <Row noGutters className="justify-content-center">
-                      <Form.Group
-                        as={Col}
-                        xs={inputWidth}
-                        controlId="passwordValidation"
-                      >
-                        <InputGroup>
-                          <InputGroup.Prepend>
-                            <InputGroup.Text id="passwordPrepend">
-                              <i className="fa fa-lock" />
-                            </InputGroup.Text>
-                          </InputGroup.Prepend>
-                          <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            value={values.password}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={touched.password && !!errors.password}
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            {errors.password}
-                          </Form.Control.Feedback>
-                        </InputGroup>
-                      </Form.Group>
-                    </Row>
-                    <Row noGutters className="justify-content-center">
-                      <Col xs={inputWidth}>
-                        <Button type="submit" block>
-                          Login
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                )}
+                      <Row noGutters className="justify-content-center">
+                        <Col xs={inputWidth}>
+                          {this.renderInput(
+                            null,
+                            "password",
+                            ...commonAttrs,
+                            null,
+                            "password",
+                            null,
+                            <i className="fa fa-lock" />
+                          )}
+                        </Col>
+                      </Row>
+                      <Row noGutters className="justify-content-center">
+                        <Col xs={inputWidth}>{this.renderButton("Login")}</Col>
+                      </Row>
+                    </Form>
+                  );
+                }}
               </Formik>
             </div>
           </LoginFormDiv>
