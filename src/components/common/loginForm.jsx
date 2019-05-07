@@ -21,8 +21,8 @@ const schema = yup.object({
   username: yup
     .string()
     .email("Please enter a valid email")
-    .required("Username cannot be empty"),
-  password: yup.string().required("Password cannot be empty")
+    .required("Username is required"),
+  password: yup.string().required("Password is required")
 });
 
 class LoginForm extends Component {
@@ -65,7 +65,7 @@ class LoginForm extends Component {
                         <InputGroup>
                           <InputGroup.Prepend>
                             <InputGroup.Text id="usernamePrepend">
-                              <i class="fa fa-user" />
+                              <i className="fa fa-user" />
                             </InputGroup.Text>
                           </InputGroup.Prepend>
                           <Form.Control
@@ -93,7 +93,7 @@ class LoginForm extends Component {
                         <InputGroup>
                           <InputGroup.Prepend>
                             <InputGroup.Text id="passwordPrepend">
-                              <i class="fa fa-lock" />
+                              <i className="fa fa-lock" />
                             </InputGroup.Text>
                           </InputGroup.Prepend>
                           <Form.Control
