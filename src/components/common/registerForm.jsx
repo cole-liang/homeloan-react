@@ -1,21 +1,22 @@
 import React from "react";
-import PasswordToolTips from "../passwordTooltips";
 import BasicForm from "./basicForm";
+import DatePicker from "./datePicker";
+import PasswordToolTips from "./passwordTooltips";
+import PasswordStrengthMeter from "./passwordStrengthMeter";
+import SectionWrapper from "./sectionWrapper";
+
 import styled from "styled-components";
+import moment from "moment";
+import * as yup from "yup";
 
 import { Formik } from "formik";
 import { Form, Col, Row, Overlay, Popover } from "react-bootstrap";
 
-import * as yup from "yup";
-
-const formWidth = 6;
-const inputWidth = 12;
-
 const firstNameRequired = "First name is required";
 const lastNameRequired = "Last name is required";
 
-const emailValid = "Please enter a valid email";
-const emailToolTip = "example@example.com";
+const emailValid = "Please enter a valid email, e.g. example@example.com";
+const emailToolTip = "e.g. example@example.com";
 const emailRequired = "Email is required";
 
 const pwdCharactersNumRegex = /^.{6,16}$/;
@@ -34,14 +35,25 @@ const mobileNumValid = "Please enter a valid Australian mobile number";
 const mobileNumToolTip = "Currently only support Australian number";
 const mobileNumRequired = "Mobile number is required";
 
+const dateOfBirthRequired = "Date of birth is is required";
+const dateOfBirthRegex = /\d{2}\/\d{2}\/\d{4}/;
+const dateOfBirthValid = "Please follow DD/MM/YYYY, e.g. 01/01/2019";
+
 const termsAcceptRequired = "Accept terms and conditions is required";
 
 const RegisterFormDiv = styled.div`
-  background: #f5f6f7;
-  width: 100%;
-
   & #registerText {
-    font-size: 20px;
+    font-size: 25px;
+    margin: 15px 0px;
+    font-weight: 600;
+  }
+
+  & .form {
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px #ccc;
+    background: #fff;
+    margin: 15px 0px;
+    padding: 15px 30px;
   }
 
   & .popover {
@@ -88,6 +100,10 @@ const schema = yup.object({
     .string()
     .matches(mobileNumRegex, mobileNumValid)
     .required(mobileNumRequired),
+  dob: yup
+    .string()
+    .matches(dateOfBirthRegex, dateOfBirthValid)
+    .required(dateOfBirthRequired),
   terms: yup.bool().oneOf([true], termsAcceptRequired)
 });
 
@@ -110,6 +126,7 @@ class RegisterForm extends BasicForm {
   state = {
     target: null,
     showToolTip: false,
+    password: "",
     passwordErrors: [pwdAlphaDigitError, pwdCharactersNumError, pwdTypeError],
     initialValues: {
       firstName: "",
@@ -118,6 +135,7 @@ class RegisterForm extends BasicForm {
       password: "",
       passwordConfirm: "",
       mobileNum: "",
+      dob: "",
       terms: false
     }
   };
@@ -139,19 +157,22 @@ class RegisterForm extends BasicForm {
 
   handlePasswordChange = (e, handleChange) => {
     handleChange(e);
-    schema
-      .validate({ password: e.target.value }, { abortEarly: false })
-      .catch(e => {
-        const passwordErrors = e.inner
-          .filter(ve => ve.path === "password")
-          .map(ve => ve.message)
-          .filter(error => !error.includes(passwordRequired));
-        this.setState({ passwordErrors });
-      });
+    let password = e.target.value;
+    schema.validate({ password }, { abortEarly: false }).catch(e => {
+      const passwordErrors = e.inner
+        .filter(ve => ve.path === "password")
+        .map(ve => ve.message)
+        .filter(error => !error.includes(passwordRequired));
+      this.setState({ password, passwordErrors });
+    });
+  };
+
+  handleDateChange = (selectedDate, setFieldValue) => {
+    setFieldValue("dob", selectedDate, true);
   };
 
   render() {
-    const { target, passwordErrors, initialValues } = this.state;
+    const { target, password, passwordErrors, initialValues } = this.state;
     const toolTipTargetName = !!target ? target.name : "";
     return (
       <RegisterFormDiv isPasswordValid={passwordErrors.length === 0}>
@@ -166,127 +187,172 @@ class RegisterForm extends BasicForm {
             {getToolTips({ passwordErrors })[toolTipTargetName]}
           </Popover>
         </Overlay>
-        <Col xs={formWidth} className="form">
-          <Row
-            noGutters
-            id="registerText"
-            as={Col}
-            xs={inputWidth}
-            className="justify-content-center"
-          >
-            <span>Register</span>
-          </Row>
-          <Formik
-            validationSchema={schema}
-            onSubmit={e => {
-              console.log(e);
-            }}
-            initialValues={initialValues}
-          >
-            {({
-              handleSubmit,
-              handleChange,
-              handleBlur,
-              values,
-              touched,
-              isValid,
-              errors
-            }) => {
-              const commonAttr = [values, touched, errors];
-              return (
-                <React.Fragment>
-                  <Form noValidate onSubmit={handleSubmit}>
-                    <Row noGutters className="justify-content-start">
-                      <Col xs={inputWidth}>
-                        {this.renderInput(
-                          "First Name",
-                          "firstName",
-                          ...commonAttr,
-                          handleChange,
-                          handleBlur
-                        )}
-                      </Col>
-                    </Row>
-                    <Row noGutters className="justify-content-start">
-                      <Col xs={inputWidth}>
-                        {this.renderInput(
-                          "Last Name",
-                          "lastName",
-                          ...commonAttr,
-                          handleChange,
-                          handleBlur
-                        )}
-                      </Col>
-                    </Row>
-                    <Row noGutters className="justify-content-start">
-                      <Col xs={inputWidth}>
-                        {this.renderInput(
-                          "Email",
-                          "email",
-                          ...commonAttr,
-                          handleChange,
-                          e => this.handleBlurCustom(e, handleBlur),
-                          this.handleFocus
-                        )}
-                      </Col>
-                    </Row>
-                    <Row noGutters className="justify-content-start">
-                      <Col xs={inputWidth}>
-                        {this.renderInput(
-                          "Password",
-                          "password",
-                          ...commonAttr,
-                          e => this.handlePasswordChange(e, handleChange),
-                          e => this.handleBlurCustom(e, handleBlur),
-                          this.handleFocus,
-                          "password"
-                        )}
-                      </Col>
-                    </Row>
-                    <Row noGutters className="justify-content-start">
-                      <Col xs={inputWidth}>
-                        {this.renderInput(
-                          "Password Confirm",
-                          "passwordConfirm",
-                          ...commonAttr,
-                          handleChange,
-                          handleBlur,
-                          null,
-                          "password",
-                          "Great! Passwords match"
-                        )}
-                      </Col>
-                    </Row>
-                    <Row noGutters className="justify-content-start">
-                      <Col xs={inputWidth}>
-                        {this.renderInput(
-                          "Mobile Number",
-                          "mobileNum",
-                          ...commonAttr,
-                          handleChange,
-                          e => this.handleBlurCustom(e, handleBlur),
-                          this.handleFocus
-                        )}
-                      </Col>
-                    </Row>
-                    <Row noGutters className="justify-content-start">
-                      {this.renderCheckBox(
-                        "Agree to terms and conditions",
-                        "terms",
-                        touched,
-                        errors,
-                        handleChange
-                      )}
-                    </Row>
-                    <Row noGutters className="justify-content-start">
-                      <Col xs={inputWidth}>{this.renderButton("Register")}</Col>
-                    </Row>
-                  </Form>
-                </React.Fragment>
-              );
-            }}
-          </Formik>
-        </Col>
+        <Row className="justify-content-center">
+          <Col xs={6} className="form">
+            <Row
+              noGutters
+              id="registerText"
+              as={Col}
+              xs={12}
+              className="justify-content-center"
+            >
+              <span>Register</span>
+            </Row>
+            <Formik
+              validationSchema={schema}
+              onSubmit={e => {
+                console.log(e);
+              }}
+              initialValues={initialValues}
+            >
+              {({
+                handleSubmit,
+                handleChange,
+                handleBlur,
+                values,
+                touched,
+                isValid,
+                errors,
+                setFieldValue
+              }) => {
+                const commonAttr = [values, touched, errors];
+                return (
+                  <React.Fragment>
+                    <Form noValidate onSubmit={handleSubmit}>
+                      <SectionWrapper name="Your Name">
+                        <Row className="justify-content-start">
+                          <Col xs={6}>
+                            {this.renderInput(
+                              "firstName",
+                              ...commonAttr,
+                              handleChange,
+                              handleBlur,
+                              { label: "First Name" }
+                            )}
+                          </Col>
+                          <Col xs={6}>
+                            {this.renderInput(
+                              "lastName",
+                              ...commonAttr,
+                              handleChange,
+                              handleBlur,
+                              { label: "Last Name" }
+                            )}
+                          </Col>
+                        </Row>
+                      </SectionWrapper>
+                      <SectionWrapper name="Account Setting">
+                        <Row noGutters className="justify-content-start">
+                          <Col xs={12}>
+                            {this.renderInput(
+                              "email",
+                              ...commonAttr,
+                              handleChange,
+                              e => this.handleBlurCustom(e, handleBlur),
+                              {
+                                label: "Account name",
+                                placeholder: "Please enter your email",
+                                handleFocus: this.handleFocus
+                              }
+                            )}
+                          </Col>
+                        </Row>
+                        <Row noGutters className="justify-content-start">
+                          <Col xs={12}>
+                            {this.renderInput(
+                              "password",
+                              ...commonAttr,
+                              e => this.handlePasswordChange(e, handleChange),
+                              e => this.handleBlurCustom(e, handleBlur),
+                              {
+                                label: "Password",
+                                type: "password",
+                                handleFocus: this.handleFocus,
+                                pwdStrengthMeter: (
+                                  <PasswordStrengthMeter password={password} />
+                                )
+                              }
+                            )}
+                          </Col>
+                        </Row>
+                        <Row noGutters className="justify-content-start">
+                          <Col xs={12}>
+                            {this.renderInput(
+                              "passwordConfirm",
+                              ...commonAttr,
+                              handleChange,
+                              handleBlur,
+                              {
+                                label: "Password Confirm",
+                                type: "password",
+                                posFeedback: "Great! Passwords match"
+                              }
+                            )}
+                          </Col>
+                        </Row>
+                      </SectionWrapper>
+                      <SectionWrapper name="Other Info">
+                        <Row className="justify-content-around">
+                          <Col xs={6}>
+                            <Row
+                              noGutters
+                              className="justify-content-start align-items-start"
+                            >
+                              <Col xs={10}>
+                                {this.renderInput(
+                                  "dob",
+                                  ...commonAttr,
+                                  handleChange,
+                                  handleBlur,
+                                  {
+                                    label: "Date of Birth",
+                                    placeholder: "DD/MM/YYYY"
+                                  }
+                                )}
+                              </Col>
+                              <Col xs={2}>
+                                <DatePicker
+                                  initialDate={moment().format("DD/MM/YYYY")}
+                                  onChange={date =>
+                                    this.handleDateChange(date, setFieldValue)
+                                  }
+                                />
+                              </Col>
+                            </Row>
+                          </Col>
+                          <Col xs={6}>
+                            {this.renderInput(
+                              "mobileNum",
+                              ...commonAttr,
+                              handleChange,
+                              e => this.handleBlurCustom(e, handleBlur),
+                              {
+                                label: "Mobile Number",
+                                handleFocus: this.handleFocus
+                              }
+                            )}
+                          </Col>
+                        </Row>
+                      </SectionWrapper>
+                      <Row noGutters className="justify-content-between">
+                        <Col xs={6}>
+                          {this.renderCheckBox(
+                            "Agree to terms and conditions",
+                            "terms",
+                            touched,
+                            errors,
+                            handleChange
+                          )}
+                        </Col>
+                        <Col xs={3}>{this.renderButton("Register")}</Col>
+                      </Row>
+                    </Form>
+                  </React.Fragment>
+                );
+              }}
+            </Formik>
+          </Col>
+        </Row>
       </RegisterFormDiv>
     );
   }

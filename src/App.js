@@ -1,17 +1,23 @@
 import React from "react";
 import AppRouter from "./router/appRouter";
-import NavigationBar from "./components/navigationBar";
-import { Container, Row } from "react-bootstrap";
+import NavigationBar from "./components/common/navigationBar";
+import Footer from "./components/common/footer";
+import styled from "styled-components";
 
-import "./App.css";
+const ContainerDiv = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
 
 function App() {
   return (
     <React.Fragment>
-      <NavigationBar />
-      <Container fluid>
+      <ContainerDiv>
+        <NavigationBar />
         <AppRouter />
-      </Container>
+        <Footer />
+      </ContainerDiv>
     </React.Fragment>
   );
 }

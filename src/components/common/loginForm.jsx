@@ -42,7 +42,7 @@ class LoginForm extends BasicForm {
   render() {
     const { initialValues } = this.state;
     return (
-      <Row>
+      <Row noGutters>
         <Col md={7} />
         <Col>
           <LoginFormDiv>
@@ -75,29 +75,22 @@ class LoginForm extends BasicForm {
                     <Form noValidate onSubmit={handleSubmit}>
                       <Row noGutters className="justify-content-center">
                         <Col xs={inputWidth}>
-                          {this.renderInput(
-                            null,
-                            "username",
-                            ...commonAttrs,
-                            null,
-                            "text",
-                            null,
-                            <i className="fa fa-user" />
-                          )}
+                          {this.renderInput("username", ...commonAttrs, {
+                            prepend: <i className="fa fa-user" />,
+                            posFeedback: null,
+                            placeholder: "Username"
+                          })}
                         </Col>
                       </Row>
 
                       <Row noGutters className="justify-content-center">
                         <Col xs={inputWidth}>
-                          {this.renderInput(
-                            null,
-                            "password",
-                            ...commonAttrs,
-                            null,
-                            "password",
-                            null,
-                            <i className="fa fa-lock" />
-                          )}
+                          {this.renderInput("password", ...commonAttrs, {
+                            text: "password",
+                            prepend: <i className="fa fa-lock" />,
+                            posFeedback: null,
+                            placeholder: "Password"
+                          })}
                         </Col>
                       </Row>
                       <Row noGutters className="justify-content-center">
