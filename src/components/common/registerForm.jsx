@@ -77,6 +77,10 @@ const RegisterFormDiv = styled.div`
     border-right-color: ${props =>
       props.isPasswordValid ? "#f6ffed" : "#fff1f0"};
   }
+
+  & .accept-btn {
+    margin-bottom: 15px;
+  }
 `;
 
 const schema = yup.object({
@@ -335,7 +339,7 @@ class RegisterForm extends BasicForm {
                         </Row>
                       </SectionWrapper>
                       <Row noGutters className="justify-content-between">
-                        <Col xs={6}>
+                        <Col xs={6} className="align-items-center d-flex">
                           {this.renderCheckBox(
                             "Agree to terms and conditions",
                             "terms",
@@ -344,7 +348,12 @@ class RegisterForm extends BasicForm {
                             handleChange
                           )}
                         </Col>
-                        <Col xs={3}>{this.renderButton("Register")}</Col>
+                        <Col
+                          xs={3}
+                          className="accept-btn align-items-center d-flex"
+                        >
+                          {this.renderButton("Register")}
+                        </Col>
                       </Row>
                     </Form>
                   </React.Fragment>

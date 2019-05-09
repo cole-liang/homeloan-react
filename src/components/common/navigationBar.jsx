@@ -20,7 +20,7 @@ const NavigationBar = () => {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <LinkContainer to="/">
           <Navbar.Brand>
-            <img src={global.COMPANY_LOGO_URL} width="30px" height="30px" />
+            <img src={global.COMPANY_LOGO_URL} />
             {global.COMPANY_NAME}
           </Navbar.Brand>
         </LinkContainer>
