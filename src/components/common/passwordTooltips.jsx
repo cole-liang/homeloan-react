@@ -1,7 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Row } from "react-bootstrap";
+
 const PasswordToolTipsDiv = styled.div`
+  & .pwdToolTipRow {
+    margin: 0px 0px 10px 0px;
+    opacity: 1 !important;
+  }
+
+  & .pwdToolTipRow:last-child {
+    margin: 0px;
+  }
+
   & #pwdCharactersNumErrorText {
     color: ${props => (props.isPwdCharactersNumInvalid ? "red" : "green")};
   }
@@ -79,13 +90,15 @@ const PasswordToolTips = ({ possibleErrors, passwordErrors }) => {
       isPwdTypeInvalid={passwordErrors.includes(possibleErrors.pwdTypeError)}
     >
       {Object.keys(possibleErrors).map(error => (
-        <p key={`${error}Text`} id={`${error}Text`}>
-          {possibleErrors[error]}
-          <span id={`${error}Icon`}>
+        <Row className="pwdToolTipRow justify-content-between">
+          <span key={`${error}Text`} id={`${error}Text`}>
+            {possibleErrors[error]}
+          </span>
+          <span id={`${error}Icon`} className="">
             <i className="fa fa-check-circle" />
             <i className="fa fa-times-circle" />
           </span>
-        </p>
+        </Row>
       ))}
     </PasswordToolTipsDiv>
   );

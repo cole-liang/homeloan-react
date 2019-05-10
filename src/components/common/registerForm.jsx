@@ -10,6 +10,7 @@ import moment from "moment";
 import * as yup from "yup";
 
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 import { Form, Col, Row, Overlay, Popover } from "react-bootstrap";
 
 const firstNameRequired = "First name is required";
@@ -39,21 +40,31 @@ const dateOfBirthRequired = "Date of birth is is required";
 const dateOfBirthRegex = /\d{2}\/\d{2}\/\d{4}/;
 const dateOfBirthValid = "Please follow DD/MM/YYYY, e.g. 01/01/2019";
 
-const termsAcceptRequired = "Accept terms and conditions is required";
+const termsAcceptRequired = "You need to accept to continue";
 
 const RegisterFormDiv = styled.div`
-  & #registerText {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  & .registerTitle {
+    margin-bottom: 35px;
+    border-bottom: 1px solid #999;
+  }
+
+  & .registerText {
     font-size: 25px;
-    margin: 15px 0px;
     font-weight: 600;
+  }
+
+  & .loginText {
+    font-size: 15px;
   }
 
   & .form {
     border-radius: 15px;
     box-shadow: 0px 0px 20px #ccc;
     background: #fff;
-    margin: 15px 0px;
-    padding: 15px 30px;
   }
 
   & .popover {
@@ -111,17 +122,17 @@ const schema = yup.object({
   terms: yup.bool().oneOf([true], termsAcceptRequired)
 });
 
-const getToolTips = ({ passwordErrors }) => ({
+const getToolTips = passwordErrors => ({
   mobileNum: <div>{mobileNumToolTip}</div>,
   email: <div>{emailToolTip}</div>,
-  password: (
+  password: passwordErrors && (
     <PasswordToolTips
       possibleErrors={{
         pwdCharactersNumError,
         pwdAlphaDigitError,
         pwdTypeError
       }}
-      passwordErrors={passwordErrors}
+      passwordErrors={passwordErrors.passwordErrors}
     />
   )
 });
@@ -147,8 +158,8 @@ class RegisterForm extends BasicForm {
   handleBlurCustom = (e, handleBlur) => {
     handleBlur(e);
     this.setState({
-      target: null,
-      showToolTip: false
+      target: e.target,
+      showToolTip: true
     });
   };
 
@@ -187,20 +198,32 @@ class RegisterForm extends BasicForm {
           container={this}
           containerPadding={20}
         >
-          <Popover id={`${toolTipTargetName}Popover`}>
+          <Popover
+            id={`${toolTipTargetName}Popover`}
+            className="d-none d-md-block"
+          >
             {getToolTips({ passwordErrors })[toolTipTargetName]}
           </Popover>
         </Overlay>
-        <Row className="justify-content-center">
-          <Col xs={6} className="form">
-            <Row
-              noGutters
-              id="registerText"
-              as={Col}
-              xs={12}
-              className="justify-content-center"
-            >
-              <span>Register</span>
+        <Row className="registerForm d-flex w-100 align-items-center justify-content-center">
+          <Col xs={11} md={8} lg={6} className="form px-3 px-md-4 py-4 my-4">
+            <Row noGutters className="registerTitle justify-content-between">
+              <Col
+                xs={12}
+                md={6}
+                className="d-flex justify-content-start align-items-end"
+              >
+                <span className="registerText">Register</span>
+              </Col>
+              <Col
+                xs={12}
+                md={6}
+                className="d-flex justify-content-sm-start justify-content-md-end"
+              >
+                <Link to="/login" className="loginText d-flex align-items-end">
+                  Already have an account?
+                </Link>
+              </Col>
             </Row>
             <Formik
               validationSchema={schema}
@@ -225,7 +248,7 @@ class RegisterForm extends BasicForm {
                     <Form noValidate onSubmit={handleSubmit}>
                       <SectionWrapper name="Your Name">
                         <Row className="justify-content-start">
-                          <Col xs={6}>
+                          <Col xs={12} md={6}>
                             {this.renderInput(
                               "firstName",
                               ...commonAttr,
@@ -234,7 +257,7 @@ class RegisterForm extends BasicForm {
                               { label: "First Name" }
                             )}
                           </Col>
-                          <Col xs={6}>
+                          <Col xs={12} md={6}>
                             {this.renderInput(
                               "lastName",
                               ...commonAttr,
@@ -256,7 +279,8 @@ class RegisterForm extends BasicForm {
                               {
                                 label: "Account name",
                                 placeholder: "Please enter your email",
-                                handleFocus: this.handleFocus
+                                handleFocus: this.handleFocus,
+                                toolTip: getToolTips()["email"]
                               }
                             )}
                           </Col>
@@ -274,7 +298,10 @@ class RegisterForm extends BasicForm {
                                 handleFocus: this.handleFocus,
                                 pwdStrengthMeter: (
                                   <PasswordStrengthMeter password={password} />
-                                )
+                                ),
+                                toolTip: getToolTips({ passwordErrors })[
+                                  "password"
+                                ]
                               }
                             )}
                           </Col>
@@ -297,12 +324,12 @@ class RegisterForm extends BasicForm {
                       </SectionWrapper>
                       <SectionWrapper name="Other Info">
                         <Row className="justify-content-around">
-                          <Col xs={6}>
+                          <Col xs={12} md={6}>
                             <Row
                               noGutters
                               className="justify-content-start align-items-start"
                             >
-                              <Col xs={10}>
+                              <Col xs={10} sm={11} md={10}>
                                 {this.renderInput(
                                   "dob",
                                   ...commonAttr,
@@ -314,7 +341,7 @@ class RegisterForm extends BasicForm {
                                   }
                                 )}
                               </Col>
-                              <Col xs={2}>
+                              <Col xs={2} sm={1} md={2}>
                                 <DatePicker
                                   initialDate={moment().format("DD/MM/YYYY")}
                                   onChange={date =>
@@ -324,7 +351,7 @@ class RegisterForm extends BasicForm {
                               </Col>
                             </Row>
                           </Col>
-                          <Col xs={6}>
+                          <Col xs={12} md={6}>
                             {this.renderInput(
                               "mobileNum",
                               ...commonAttr,
@@ -332,14 +359,19 @@ class RegisterForm extends BasicForm {
                               e => this.handleBlurCustom(e, handleBlur),
                               {
                                 label: "Mobile Number",
-                                handleFocus: this.handleFocus
+                                handleFocus: this.handleFocus,
+                                toolTip: getToolTips()["mobileNum"]
                               }
                             )}
                           </Col>
                         </Row>
                       </SectionWrapper>
                       <Row noGutters className="justify-content-between">
-                        <Col xs={6} className="align-items-center d-flex">
+                        <Col
+                          xs={12}
+                          md={9}
+                          className="align-items-center d-flex"
+                        >
                           {this.renderCheckBox(
                             "Agree to terms and conditions",
                             "terms",
@@ -349,7 +381,8 @@ class RegisterForm extends BasicForm {
                           )}
                         </Col>
                         <Col
-                          xs={3}
+                          xs={12}
+                          md={3}
                           className="accept-btn align-items-center d-flex"
                         >
                           {this.renderButton("Register")}
