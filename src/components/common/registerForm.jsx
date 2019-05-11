@@ -13,6 +13,8 @@ import { Formik } from "formik";
 import { Link } from "react-router-dom";
 import { Form, Col, Row, Overlay, Popover } from "react-bootstrap";
 
+const nameRegex = /^[a-zA-Z]+$/;
+const nameValid = "Only accept alphabets";
 const firstNameRequired = "First name is required";
 const lastNameRequired = "Last name is required";
 
@@ -95,8 +97,14 @@ const RegisterFormDiv = styled.div`
 `;
 
 const schema = yup.object({
-  firstName: yup.string().required(firstNameRequired),
-  lastName: yup.string().required(lastNameRequired),
+  firstName: yup
+    .string()
+    .matches(nameRegex, nameValid)
+    .required(firstNameRequired),
+  lastName: yup
+    .string()
+    .matches(nameRegex, nameValid)
+    .required(lastNameRequired),
   email: yup
     .string()
     .email(emailValid)
@@ -277,7 +285,7 @@ class RegisterForm extends BasicForm {
                               handleChange,
                               e => this.handleBlurCustom(e, handleBlur),
                               {
-                                label: "Account name",
+                                label: "Account Name",
                                 placeholder: "Please enter your email",
                                 handleFocus: this.handleFocus,
                                 toolTip: getToolTips()["email"]
@@ -343,6 +351,7 @@ class RegisterForm extends BasicForm {
                               </Col>
                               <Col xs={2} sm={1} md={2}>
                                 <DatePicker
+                                  disableFuture
                                   initialDate={moment().format("DD/MM/YYYY")}
                                   onChange={date =>
                                     this.handleDateChange(date, setFieldValue)

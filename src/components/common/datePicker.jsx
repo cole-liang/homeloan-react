@@ -46,7 +46,8 @@ class DatePicker extends Component {
   }
 
   render() {
-    const { initialDate } = this.props;
+    const { initialDate, disableFuture } = this.props;
+    const maxDate = disableFuture ? new Date() : null;
     return (
       <React.Fragment>
         <DatePickerDiv>
@@ -60,6 +61,7 @@ class DatePicker extends Component {
         </DatePickerDiv>
         <MuiThemeProvider muiTheme={materialTheme}>
           <DatePickerDialog
+            maxDate={maxDate}
             ref={r => (datePickerDialog = r)}
             /* Must provide firstDayOfWeek or rendering of calendar will be broken. */
             firstDayOfWeek={0}

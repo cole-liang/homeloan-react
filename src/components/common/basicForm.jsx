@@ -8,6 +8,10 @@ const InputDiv = styled.div`
     margin-bottom: 10px;
     color: rgba(0, 0, 0, 0.5);
   }
+
+  & [id$="Icon"] {
+    margin-left: 0px !important;
+  }
 `;
 
 class BasicForm extends Component {
@@ -24,7 +28,7 @@ class BasicForm extends Component {
       label,
       handleFocus,
       type = "text",
-      posFeedback = "Looks good",
+      posFeedback = "Looks good!",
       prepend,
       pwdStrengthMeter,
       placeholder,
