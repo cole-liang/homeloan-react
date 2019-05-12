@@ -89,7 +89,7 @@ const Footer = () => {
         <Col
           xs={12}
           md={6}
-          className="footerAbout order-1 order-md-0 d-flex align-items-center justify-content-md-start justify-content-center noPadding"
+          className="footerAbout order-1 order-md-0 d-flex align-items-center justify-content-md-start justify-content-center noPaddingAndMargin"
         >
           <Link to="/">
             <img className="companyBrand" src={global.COMPANY_LOGO_URL} />
@@ -103,20 +103,20 @@ const Footer = () => {
         <Col
           xs={12}
           md={2}
-          className="d-flex order-0 order-md-1 justify-content-center justify-content-md-end noPadding"
+          className="d-flex order-0 order-md-1 justify-content-center justify-content-md-end noPaddingAndMargin"
         >
-          <ul className="footerSocial d-flex align-items-center noPadding">
+          <ul className="footerSocial d-flex align-items-center noPaddingAndMargin">
             <li>
-              <i class="fa fa-twitter-square" />
+              <i className="fa fa-twitter-square" />
             </li>
             <li>
-              <i class="fa fa-facebook-square" />
+              <i className="fa fa-facebook-square" />
             </li>
             <li>
-              <i class="fa fa-google-plus-square" />
+              <i className="fa fa-google-plus-square" />
             </li>
             <li>
-              <i class="fa fa-instagram" />
+              <i className="fa fa-instagram" />
             </li>
           </ul>
         </Col>
@@ -125,19 +125,19 @@ const Footer = () => {
         <Col
           xs={12}
           md={6}
-          className="d-flex justify-content-center justify-content-md-start noPadding"
+          className="d-flex justify-content-center justify-content-md-start noPaddingAndMargin"
         >
           <span>
-            Copyright <i class="fa fa-copyright" /> 2019 {global.COMPANY_NAME}{" "}
-            All Rights Reserved.
+            Copyright <i className="fa fa-copyright" /> 2019{" "}
+            {global.COMPANY_NAME} All Rights Reserved.
           </span>
         </Col>
         <Col
           xs={12}
           md={6}
-          className="d-flex justify-content-center justify-content-md-end noPadding"
+          className="d-flex justify-content-center justify-content-md-end noPaddingAndMargin"
         >
-          <ul className="legalList noPadding">
+          <ul className="legalList noPaddingAndMargin">
             <li>
               Privacy Policy
               <span className="dot" />

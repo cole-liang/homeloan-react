@@ -1,15 +1,18 @@
 import React from "react";
 import BasicForm from "./basicForm";
-import styled from "styled-components";
 
 import { Formik } from "formik";
 import { Form, Row, Col } from "react-bootstrap";
 
+import styled from "styled-components";
+import * as global from "../globalValues";
 import * as yup from "yup";
 
 const LoginFormDiv = styled.div`
-  background: #f5f6f7;
-  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  height: 100%;
+  margin-right: 30px;
+  color: #fff;
 
   & #loginText {
     font-size: 20px;
@@ -42,65 +45,72 @@ class LoginForm extends BasicForm {
   render() {
     const { initialValues } = this.state;
     return (
-      <Row noGutters>
-        <Col md={7} />
+      <Row noGutters className="h-100">
+        <Col xs={8}>
+          <img src={global.COMPANY_LOGO_URL} />
+          {global.COMPANY_NAME}
+        </Col>
         <Col>
           <LoginFormDiv>
-            <Row id="loginText" className="justify-content-center">
-              <span>LOG IN</span>
-            </Row>
-            <div className="inputFieids">
-              <Formik
-                validationSchema={schema}
-                onSubmit={console.log}
-                initialValues={initialValues}
-              >
-                {({
-                  handleSubmit,
-                  handleChange,
-                  handleBlur,
-                  values,
-                  touched,
-                  isValid,
-                  errors
-                }) => {
-                  const commonAttrs = [
+            <Col xs={12}>
+              <Row noGutters id="loginText" className="justify-content-center">
+                <span>LOG IN</span>
+              </Row>
+              <div className="inputFieids">
+                <Formik
+                  validationSchema={schema}
+                  onSubmit={console.log}
+                  initialValues={initialValues}
+                >
+                  {({
+                    handleSubmit,
+                    handleChange,
+                    handleBlur,
                     values,
                     touched,
-                    errors,
-                    handleChange,
-                    handleBlur
-                  ];
-                  return (
-                    <Form noValidate onSubmit={handleSubmit}>
-                      <Row noGutters className="justify-content-center">
-                        <Col xs={inputWidth}>
-                          {this.renderInput("username", ...commonAttrs, {
-                            prepend: <i className="fa fa-user" />,
-                            posFeedback: null,
-                            placeholder: "Username"
-                          })}
-                        </Col>
-                      </Row>
+                    isValid,
+                    errors
+                  }) => {
+                    const commonAttrs = [
+                      values,
+                      touched,
+                      errors,
+                      handleChange,
+                      handleBlur
+                    ];
+                    return (
+                      <Form noValidate onSubmit={handleSubmit}>
+                        <Row noGutters className="justify-content-center">
+                          <Col xs={inputWidth}>
+                            {this.renderInput("username", ...commonAttrs, {
+                              prepend: <i className="fa fa-user" />,
+                              posFeedback: null,
+                              placeholder: "Username"
+                            })}
+                          </Col>
+                        </Row>
 
-                      <Row noGutters className="justify-content-center">
-                        <Col xs={inputWidth}>
-                          {this.renderInput("password", ...commonAttrs, {
-                            text: "password",
-                            prepend: <i className="fa fa-lock" />,
-                            posFeedback: null,
-                            placeholder: "Password"
-                          })}
-                        </Col>
-                      </Row>
-                      <Row noGutters className="justify-content-center">
-                        <Col xs={inputWidth}>{this.renderButton("Login")}</Col>
-                      </Row>
-                    </Form>
-                  );
-                }}
-              </Formik>
-            </div>
+                        <Row noGutters className="justify-content-center">
+                          <Col xs={inputWidth}>
+                            {this.renderInput("password", ...commonAttrs, {
+                              text: "password",
+                              prepend: <i className="fa fa-lock" />,
+                              posFeedback: null,
+                              placeholder: "Password"
+                            })}
+                          </Col>
+                        </Row>
+                        <Row noGutters className="justify-content-center">
+                          <Col xs={inputWidth}>
+                            {this.renderSubmitButton("Login")}
+                          </Col>
+                        </Row>
+                      </Form>
+                    );
+                  }}
+                </Formik>
+              </div>
+            </Col>
           </LoginFormDiv>
         </Col>
       </Row>

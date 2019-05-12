@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import { Form, Button, InputGroup } from "react-bootstrap";
+
 import styled from "styled-components";
 
 const InputDiv = styled.div`
@@ -86,8 +88,25 @@ class BasicForm extends Component {
     </Form.Group>
   );
 
-  renderButton = label => (
+  renderSubmitButton = label => (
     <Button variant="outline-primary" type="submit" block>
+      {label}
+    </Button>
+  );
+
+  renderCustomButton = (
+    label,
+    onClick,
+    variant = "outline-primary",
+    type = "button"
+  ) => (
+    <Button variant={variant} type={type} onClick={onClick} block>
+      {label}
+    </Button>
+  );
+
+  renderCustomSubmitButton = (label, variant = "outline-primary") => (
+    <Button variant={variant} type="submit" block>
       {label}
     </Button>
   );

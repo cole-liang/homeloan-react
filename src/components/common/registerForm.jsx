@@ -14,13 +14,13 @@ import { Link } from "react-router-dom";
 import { Form, Col, Row, Overlay, Popover } from "react-bootstrap";
 
 const nameRegex = /^[a-zA-Z]+$/;
-const nameValid = "Only accept alphabets";
-const firstNameRequired = "First name is required";
-const lastNameRequired = "Last name is required";
+const nameValidError = "Only accept alphabets";
+const firstNameRequiredError = "First name is required";
+const lastNameRequiredError = "Last name is required";
 
-const emailValid = "Please enter a valid email, e.g. example@example.com";
+const emailValidError = "Please enter a valid email, e.g. example@example.com";
 const emailToolTip = "e.g. example@example.com";
-const emailRequired = "Email is required";
+const emailRequiredError = "Email is required";
 
 const pwdCharactersNumRegex = /^.{6,16}$/;
 const pwdCharactersNumError = "Password must have 6-16 characters";
@@ -28,21 +28,21 @@ const pwdAlphaDigitRegex = /^(?=.*[A-Za-z])(?=.*\d).+$/;
 const pwdAlphaDigitError = "At least one alphabet and one number";
 const pwdTypeRegex = /^[\w\d]+$/;
 const pwdTypeError = "Contains only 0-9, a-z, A-Z and _";
-const passwordRequired = "Password is required";
+const passwordRequiredError = "Password is required";
 
-const pwdsMatchCheck = "Passwords must match";
-const passwordConfirmRequired = "Password confirm is required";
+const pwdsMatchError = "Passwords must match";
+const passwordConfirmRequiredError = "Password confirm is required";
 
 const mobileNumRegex = /^(4|04)\d{8}$/;
-const mobileNumValid = "Please enter a valid Australian mobile number";
+const mobileNumValidError = "Please enter a valid Australian mobile number";
 const mobileNumToolTip = "Currently only support Australian number";
-const mobileNumRequired = "Mobile number is required";
+const mobileNumRequiredError = "Mobile number is required";
 
-const dateOfBirthRequired = "Date of birth is is required";
+const dateOfBirthRequiredError = "Date of birth is is required";
 const dateOfBirthRegex = /\d{2}\/\d{2}\/\d{4}/;
-const dateOfBirthValid = "Please follow DD/MM/YYYY, e.g. 01/01/2019";
+const dateOfBirthValidError = "Please follow DD/MM/YYYY, e.g. 01/01/2019";
 
-const termsAcceptRequired = "You need to accept to continue";
+const termsAcceptRequiredError = "You need to accept to continue";
 
 const RegisterFormDiv = styled.div`
   display: flex;
@@ -94,40 +94,47 @@ const RegisterFormDiv = styled.div`
   & .accept-btn {
     margin-bottom: 15px;
   }
+
+  /* display: md(middle screen) */
+  @media only screen and (max-width: 768px) {
+    & .form {
+      border-radius: 0px;
+    }
+  }
 `;
 
 const schema = yup.object({
   firstName: yup
     .string()
-    .matches(nameRegex, nameValid)
-    .required(firstNameRequired),
+    .matches(nameRegex, nameValidError)
+    .required(firstNameRequiredError),
   lastName: yup
     .string()
-    .matches(nameRegex, nameValid)
-    .required(lastNameRequired),
+    .matches(nameRegex, nameValidError)
+    .required(lastNameRequiredError),
   email: yup
     .string()
-    .email(emailValid)
-    .required(emailRequired),
+    .email(emailValidError)
+    .required(emailRequiredError),
   password: yup
     .string()
     .matches(pwdCharactersNumRegex, pwdCharactersNumError)
     .matches(pwdAlphaDigitRegex, pwdAlphaDigitError)
     .matches(pwdTypeRegex, pwdTypeError)
-    .required(passwordRequired),
+    .required(passwordRequiredError),
   passwordConfirm: yup
     .string()
-    .oneOf([yup.ref("password"), null], pwdsMatchCheck)
-    .required(passwordConfirmRequired),
+    .oneOf([yup.ref("password"), null], pwdsMatchError)
+    .required(passwordConfirmRequiredError),
   mobileNum: yup
     .string()
-    .matches(mobileNumRegex, mobileNumValid)
-    .required(mobileNumRequired),
+    .matches(mobileNumRegex, mobileNumValidError)
+    .required(mobileNumRequiredError),
   dob: yup
     .string()
-    .matches(dateOfBirthRegex, dateOfBirthValid)
-    .required(dateOfBirthRequired),
-  terms: yup.bool().oneOf([true], termsAcceptRequired)
+    .matches(dateOfBirthRegex, dateOfBirthValidError)
+    .required(dateOfBirthRequiredError),
+  terms: yup.bool().oneOf([true], termsAcceptRequiredError)
 });
 
 const getToolTips = passwordErrors => ({
@@ -185,7 +192,7 @@ class RegisterForm extends BasicForm {
       const passwordErrors = e.inner
         .filter(ve => ve.path === "password")
         .map(ve => ve.message)
-        .filter(error => !error.includes(passwordRequired));
+        .filter(error => !error.includes(passwordRequiredError));
       this.setState({ password, passwordErrors });
     });
   };
@@ -214,7 +221,12 @@ class RegisterForm extends BasicForm {
           </Popover>
         </Overlay>
         <Row className="registerForm d-flex w-100 align-items-center justify-content-center">
-          <Col xs={11} md={8} lg={6} className="form px-3 px-md-4 py-4 my-4">
+          <Col
+            xs={12}
+            md={8}
+            lg={6}
+            className="form px-3 px-md-4 py-4 my-0 my-md-4"
+          >
             <Row noGutters className="registerTitle justify-content-between">
               <Col
                 xs={12}
@@ -394,7 +406,7 @@ class RegisterForm extends BasicForm {
                           md={3}
                           className="accept-btn align-items-center d-flex"
                         >
-                          {this.renderButton("Register")}
+                          {this.renderSubmitButton("Register")}
                         </Col>
                       </Row>
                     </Form>

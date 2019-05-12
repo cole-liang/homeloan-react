@@ -90,10 +90,11 @@ const PasswordToolTips = ({ possibleErrors, passwordErrors }) => {
       isPwdTypeInvalid={passwordErrors.includes(possibleErrors.pwdTypeError)}
     >
       {Object.keys(possibleErrors).map(error => (
-        <Row className="pwdToolTipRow justify-content-between">
-          <span key={`${error}Text`} id={`${error}Text`}>
-            {possibleErrors[error]}
-          </span>
+        <Row
+          key={`${error}Row`}
+          className="pwdToolTipRow justify-content-between"
+        >
+          <span id={`${error}Text`}>{possibleErrors[error]}</span>
           <span id={`${error}Icon`} className="">
             <i className="fa fa-check-circle" />
             <i className="fa fa-times-circle" />
