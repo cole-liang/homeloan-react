@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import { ProgressBar } from "react-bootstrap";
+
 import zxcvbn from "zxcvbn";
 
 class PasswordStrengthMeter extends Component {

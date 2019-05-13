@@ -1,9 +1,11 @@
 import React from "react";
+
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { connect } from "react-redux";
 
 import styled from "styled-components";
+
 import * as global from "../globalValues";
 
 const NavDiv = styled.div`

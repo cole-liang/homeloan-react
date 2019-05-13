@@ -44,7 +44,6 @@ class GetStarted extends Component {
   handleSubmit = data => {
     const { currentStep } = this.state;
     const canHelp = this.calculateProb(data);
-    console.log(data, canHelp);
     this.setState({ canHelp }, () => {
       this.nextStep(currentStep);
     });

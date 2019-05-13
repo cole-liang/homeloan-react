@@ -9,6 +9,8 @@ import { Form, Row, Col } from "react-bootstrap";
 
 import styled from "styled-components";
 import homeLoanPng from "../../assets/homeloan.png";
+import mobileCompanyLogo from "../../assets/zinq-logo-purple.png";
+
 import * as userAction from "../../actions/userAction";
 import * as global from "../globalValues";
 import * as yup from "yup";
@@ -19,8 +21,8 @@ const LoginFormDiv = styled.div`
   color: #fff;
 
   & .companyLogo {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
 
   & .homeloanPng {
@@ -50,10 +52,6 @@ const LoginFormDiv = styled.div`
   /* display: md(middle screen) */
   @media only screen and (max-width: 767.5px) {
     color: #000;
-
-    & .companyLogo {
-      background: purple;
-    }
 
     & .form {
       background: #fff;
@@ -123,8 +121,13 @@ class LoginForm extends BasicForm {
               >
                 <Row className="justify-content-center">
                   <img
-                    className="companyLogo"
+                    className="d-none d-md-block companyLogo"
                     src={global.COMPANY_LOGO_URL}
+                    alt="Zinq Logo"
+                  />
+                  <img
+                    className="d-block d-md-none companyLogo"
+                    src={mobileCompanyLogo}
                     alt="Zinq Logo"
                   />
                 </Row>

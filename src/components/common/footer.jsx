@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import * as global from "../globalValues";
-
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+import * as global from "../globalValues";
 
 const FooterStyle = styled.footer`
   color: #9fa3a6;

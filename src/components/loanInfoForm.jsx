@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import { Form, Row, Col } from "react-bootstrap";
 
 import styled from "styled-components";
+
 import * as yup from "yup";
 
 const LoanInfoFormDiv = styled.div`
@@ -164,7 +165,8 @@ class LoanInfoForm extends BasicForm {
                                   ...commonAttrs,
                                   {
                                     label: "Your Income",
-                                    prepend: "AUD"
+                                    prepend: "AUD",
+                                    required: true
                                   }
                                 )}
                               </Col>
@@ -174,7 +176,8 @@ class LoanInfoForm extends BasicForm {
                                   ...commonAttrs,
                                   {
                                     label: "Your Expense",
-                                    prepend: "AUD"
+                                    prepend: "AUD",
+                                    required: true
                                   }
                                 )}
                               </Col>
@@ -186,7 +189,8 @@ class LoanInfoForm extends BasicForm {
                                       ...commonAttrs,
                                       {
                                         label: "Partner's Income",
-                                        prepend: "AUD"
+                                        prepend: "AUD",
+                                        required: true
                                       }
                                     )}
                                   </Col>
@@ -196,7 +200,8 @@ class LoanInfoForm extends BasicForm {
                                       ...commonAttrs,
                                       {
                                         label: "Partner's Expense",
-                                        prepend: "AUD"
+                                        prepend: "AUD",
+                                        required: true
                                       }
                                     )}
                                   </Col>
@@ -205,7 +210,8 @@ class LoanInfoForm extends BasicForm {
                               <Col xs={12}>
                                 {this.renderInput("deposit", ...commonAttrs, {
                                   label: "Your Deposit",
-                                  prepend: "AUD"
+                                  prepend: "AUD",
+                                  required: true
                                 })}
                               </Col>
                             </Row>
@@ -218,14 +224,16 @@ class LoanInfoForm extends BasicForm {
                                   ...commonAttrs,
                                   {
                                     label: "Property Value",
-                                    prepend: "AUD"
+                                    prepend: "AUD",
+                                    required: true
                                   }
                                 )}
                               </Col>
 
                               <Col xs={12} md={6}>
                                 {this.renderInput("postcode", ...commonAttrs, {
-                                  label: "Postcode of the Property"
+                                  label: "Postcode of the Property",
+                                  required: true
                                 })}
                               </Col>
                             </Row>

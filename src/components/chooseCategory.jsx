@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import { ReactComponent as CoupleSVG } from "../assets/couple.svg";
 import { ReactComponent as SingleSVG } from "../assets/single.svg";
+
+import styled from "styled-components";
 
 const ChooseCategoryDiv = styled.div`
   & .coupleSvg {

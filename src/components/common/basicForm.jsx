@@ -14,6 +14,12 @@ const InputDiv = styled.div`
   & [id$="Icon"] {
     margin-left: 0px !important;
   }
+
+  & .asterisk::before {
+    content: "*";
+    color: red;
+    margin-right: 5px;
+  }
 `;
 
 class BasicForm extends Component {
@@ -24,7 +30,7 @@ class BasicForm extends Component {
     errors,
     handleChange,
     handleBlur,
-    options = null
+    options = {}
   ) => {
     const {
       label,
@@ -34,12 +40,18 @@ class BasicForm extends Component {
       prepend,
       pwdStrengthMeter,
       placeholder,
-      toolTip
+      toolTip,
+      required = false
     } = options;
     return (
       <InputDiv>
         <Form.Group controlId={`${path}Validation`}>
-          {label && <Form.Label>{label}</Form.Label>}
+          {label && (
+            <Form.Label>
+              {required && <span className="asterisk" />}
+              {label}
+            </Form.Label>
+          )}
           {toolTip && (
             <div className="inputToolTip d-block d-md-none">{toolTip}</div>
           )}
@@ -75,18 +87,35 @@ class BasicForm extends Component {
     );
   };
 
-  renderCheckBox = (label, path, touched, errors, handleChange) => (
-    <Form.Group>
-      <Form.Check
-        name={path}
-        label={label}
-        onChange={handleChange}
-        isInvalid={touched[path] && !!errors[path]}
-        feedback={errors[path]}
-        id={`${path}Validation`}
-      />
-    </Form.Group>
-  );
+  renderCheckBox = (
+    label,
+    path,
+    touched,
+    errors,
+    handleChange,
+    options = {}
+  ) => {
+    const { required = false } = options;
+    return (
+      <InputDiv>
+        <Form.Group>
+          <Form.Check
+            name={path}
+            label={
+              <div>
+                {required && <span className="asterisk" />}
+                {label}
+              </div>
+            }
+            onChange={handleChange}
+            isInvalid={touched[path] && !!errors[path]}
+            feedback={errors[path]}
+            id={`${path}Validation`}
+          />
+        </Form.Group>
+      </InputDiv>
+    );
+  };
 
   renderSubmitButton = label => (
     <Button variant="outline-primary" type="submit" block>

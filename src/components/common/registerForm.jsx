@@ -12,6 +12,7 @@ import { Form, Col, Row, Overlay, Popover } from "react-bootstrap";
 
 import styled from "styled-components";
 import moment from "moment";
+
 import * as yup from "yup";
 import * as userAction from "../../actions/userAction";
 
@@ -279,7 +280,7 @@ class RegisterForm extends BasicForm {
                               ...commonAttr,
                               handleChange,
                               handleBlur,
-                              { label: "First Name" }
+                              { label: "First Name", required: true }
                             )}
                           </Col>
                           <Col xs={12} md={6}>
@@ -288,7 +289,7 @@ class RegisterForm extends BasicForm {
                               ...commonAttr,
                               handleChange,
                               handleBlur,
-                              { label: "Last Name" }
+                              { label: "Last Name", required: true }
                             )}
                           </Col>
                         </Row>
@@ -305,7 +306,8 @@ class RegisterForm extends BasicForm {
                                 label: "Account Name",
                                 placeholder: "Please enter your email",
                                 handleFocus: this.handleFocus,
-                                toolTip: getToolTips()["email"]
+                                toolTip: getToolTips()["email"],
+                                required: true
                               }
                             )}
                           </Col>
@@ -326,7 +328,8 @@ class RegisterForm extends BasicForm {
                                 ),
                                 toolTip: getToolTips({ passwordErrors })[
                                   "password"
-                                ]
+                                ],
+                                required: true
                               }
                             )}
                           </Col>
@@ -341,7 +344,8 @@ class RegisterForm extends BasicForm {
                               {
                                 label: "Password Confirm",
                                 type: "password",
-                                posFeedback: "Great! Passwords match"
+                                posFeedback: "Great! Passwords match",
+                                required: true
                               }
                             )}
                           </Col>
@@ -362,7 +366,8 @@ class RegisterForm extends BasicForm {
                                   handleBlur,
                                   {
                                     label: "Date of Birth",
-                                    placeholder: "DD/MM/YYYY"
+                                    placeholder: "DD/MM/YYYY",
+                                    required: true
                                   }
                                 )}
                               </Col>
@@ -386,7 +391,8 @@ class RegisterForm extends BasicForm {
                               {
                                 label: "Mobile Number",
                                 handleFocus: this.handleFocus,
-                                toolTip: getToolTips()["mobileNum"]
+                                toolTip: getToolTips()["mobileNum"],
+                                required: true
                               }
                             )}
                           </Col>
@@ -403,7 +409,8 @@ class RegisterForm extends BasicForm {
                             "terms",
                             touched,
                             errors,
-                            handleChange
+                            handleChange,
+                            { required: true }
                           )}
                         </Col>
                         <Col

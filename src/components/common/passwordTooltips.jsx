@@ -1,7 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 
 import { Row } from "react-bootstrap";
+
+import styled from "styled-components";
 
 const PasswordToolTipsDiv = styled.div`
   & .pwdToolTipRow {

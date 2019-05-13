@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import configureStore from "./store/configureStore";
+
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+
+import configureStore from "./store/configureStore";
+
 import * as serviceWorker from "./serviceWorker";
 
 import "bootstrap/dist/css/bootstrap.css";
