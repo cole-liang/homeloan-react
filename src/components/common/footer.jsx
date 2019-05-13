@@ -92,7 +92,11 @@ const Footer = () => {
           className="footerAbout order-1 order-md-0 d-flex align-items-center justify-content-md-start justify-content-center noPaddingAndMargin"
         >
           <Link to="/">
-            <img className="companyBrand" src={global.COMPANY_LOGO_URL} />
+            <img
+              className="companyBrand"
+              src={global.COMPANY_LOGO_URL}
+              alt="Zinq Logo"
+            />
           </Link>
           <ul className="footerNav">
             <li>Who We Are</li>

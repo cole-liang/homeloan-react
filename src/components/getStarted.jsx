@@ -72,7 +72,7 @@ class GetStarted extends Component {
   };
 
   render() {
-    const { currentStep, category, canHelp, data } = this.state;
+    const { currentStep, category, canHelp } = this.state;
     return (
       <GetStartedDiv>
         <Row noGutters className="noPadding justify-content-center py-5 h-100">

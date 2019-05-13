@@ -38,13 +38,12 @@ const NavDiv = styled.div`
 `;
 
 const NavigationBar = ({ user }) => {
-  console.log("Nav", user);
   return (
     <NavDiv>
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
         <LinkContainer to="/">
           <Navbar.Brand>
-            <img src={global.COMPANY_LOGO_URL} />
+            <img src={global.COMPANY_LOGO_URL} alt="Zinq Logo" />
             {global.COMPANY_NAME}
           </Navbar.Brand>
         </LinkContainer>

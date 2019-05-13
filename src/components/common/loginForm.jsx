@@ -108,7 +108,11 @@ class LoginForm extends BasicForm {
             className="noPadding d-none d-md-flex flex-column justify-content-end"
           >
             <Row className="justify-content-center">
-              <img className="homeloanPng" src={homeLoanPng} />
+              <img
+                className="homeloanPng"
+                src={homeLoanPng}
+                alt="Home loan pic"
+              />
             </Row>
           </Col>
           <Col xs={12} md={5} lg={3} className="noPadding">
@@ -118,7 +122,11 @@ class LoginForm extends BasicForm {
                 className="noPadding m-auto h-100 d-flex flex-column justify-content-center"
               >
                 <Row className="justify-content-center">
-                  <img className="companyLogo" src={global.COMPANY_LOGO_URL} />
+                  <img
+                    className="companyLogo"
+                    src={global.COMPANY_LOGO_URL}
+                    alt="Zinq Logo"
+                  />
                 </Row>
                 <Row
                   noGutters
