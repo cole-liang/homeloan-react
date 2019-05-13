@@ -1,5 +1,6 @@
 import React from "react";
 import LoginForm from "./../components/common/loginForm";
+import Logout from "./../components/common/logout";
 import HomeLoan from "./../components/homeLoan";
 import NotFound from "../components/common/notFound";
 import RegisterForm from "../components/common/registerForm";
@@ -25,6 +26,7 @@ const AppRouter = () => {
         <Switch>
           <Route path="/notFound" exact component={NotFound} />
           <Route path="/login" exact component={LoginForm} />
+          <Route path="/logout" exact component={Logout} />
           <Route path="/register" exact component={RegisterForm} />
           <Route path="/getStarted" exact component={GetStarted} />
           <Route path="/" exact component={HomeLoan} />

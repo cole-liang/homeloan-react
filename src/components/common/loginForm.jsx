@@ -1,12 +1,15 @@
 import React from "react";
 import BasicForm from "./basicForm";
 
+import { Alert } from "antd";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { Form, Row, Col } from "react-bootstrap";
 
 import styled from "styled-components";
 import homeLoanPng from "../../assets/homeloan.png";
+import * as userAction from "../../actions/userAction";
 import * as global from "../globalValues";
 import * as yup from "yup";
 
@@ -41,11 +44,11 @@ const LoginFormDiv = styled.div`
   }
 
   & .inputFieid {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   /* display: md(middle screen) */
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 767.5px) {
     color: #000;
 
     & .companyLogo {
@@ -63,29 +66,39 @@ const LoginFormDiv = styled.div`
   }
 `;
 
-const usernameValid = "Please enter a valid email";
-const usernameRequired = "Username is required";
+const emailValid = "Please enter a valid email";
+const emailRequired = "Username is required";
 
 const passwordRequired = "Password is required";
 
 const schema = yup.object({
-  username: yup
+  email: yup
     .string()
-    .email(usernameValid)
-    .required(usernameRequired),
+    .email(emailValid)
+    .required(emailRequired),
   password: yup.string().required(passwordRequired)
 });
 
 class LoginForm extends BasicForm {
   state = {
     initialValues: {
-      username: "",
+      email: "",
       password: ""
+    },
+    error: null
+  };
+
+  handleSubmit = user => {
+    const result = this.props.login(user);
+    if (!!result.error) {
+      this.setState({ error: result.error });
+    } else {
+      this.props.history.push("/");
     }
   };
 
   render() {
-    const { initialValues } = this.state;
+    const { initialValues, error } = this.state;
     return (
       <Row noGutters className="h-100">
         <LoginFormDiv>
@@ -114,10 +127,15 @@ class LoginForm extends BasicForm {
                 >
                   <div>LOG IN</div>
                 </Row>
+                {error && (
+                  <div className="mb-2">
+                    <Alert message={error} type="error" showIcon />
+                  </div>
+                )}
                 <div>
                   <Formik
                     validationSchema={schema}
-                    onSubmit={console.log}
+                    onSubmit={this.handleSubmit}
                     initialValues={initialValues}
                   >
                     {({
@@ -140,7 +158,7 @@ class LoginForm extends BasicForm {
                         <Form noValidate onSubmit={handleSubmit}>
                           <Row noGutters className="justify-content-center">
                             <Col xs={12} className="inputFieid">
-                              {this.renderInput("username", ...commonAttrs, {
+                              {this.renderInput("email", ...commonAttrs, {
                                 prepend: <i className="fa fa-user" />,
                                 posFeedback: null,
                                 placeholder: "Username"
@@ -150,7 +168,7 @@ class LoginForm extends BasicForm {
                           <Row noGutters className="justify-content-center">
                             <Col xs={12} className="inputFieid">
                               {this.renderInput("password", ...commonAttrs, {
-                                text: "password",
+                                type: "password",
                                 prepend: <i className="fa fa-lock" />,
                                 posFeedback: null,
                                 placeholder: "Password"
@@ -194,4 +212,11 @@ class LoginForm extends BasicForm {
   }
 }
 
-export default LoginForm;
+const mapDispatchToProps = dispatch => ({
+  login: user => dispatch(userAction.loginUser(user))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(LoginForm);

@@ -25,7 +25,7 @@ const GetStartedDiv = styled.div`
 const Step = Steps.Step;
 
 class GetStarted extends Component {
-  state = { currentStep: 2, category: "", canHelp: false };
+  state = { currentStep: 0, category: "", canHelp: false };
 
   previousStep = currentStep => {
     this.setState({ currentStep: currentStep - 1 });

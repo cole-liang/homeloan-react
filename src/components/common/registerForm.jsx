@@ -5,13 +5,15 @@ import PasswordToolTips from "./passwordTooltips";
 import PasswordStrengthMeter from "./passwordStrengthMeter";
 import SectionWrapper from "./sectionWrapper";
 
+import { Formik } from "formik";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Form, Col, Row, Overlay, Popover } from "react-bootstrap";
+
 import styled from "styled-components";
 import moment from "moment";
 import * as yup from "yup";
-
-import { Formik } from "formik";
-import { Link } from "react-router-dom";
-import { Form, Col, Row, Overlay, Popover } from "react-bootstrap";
+import * as userAction from "../../actions/userAction";
 
 const nameRegex = /^[a-zA-Z]+$/;
 const nameValidError = "Only accept alphabets";
@@ -96,7 +98,7 @@ const RegisterFormDiv = styled.div`
   }
 
   /* display: md(middle screen) */
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767.5px) {
     & .form {
       border-radius: 0px;
     }
@@ -201,6 +203,11 @@ class RegisterForm extends BasicForm {
     setFieldValue("dob", selectedDate, true);
   };
 
+  handleSubmit = user => {
+    this.props.registerUser(user);
+    this.props.history.push("/");
+  };
+
   render() {
     const { target, password, passwordErrors, initialValues } = this.state;
     const toolTipTargetName = !!target ? target.name : "";
@@ -247,9 +254,7 @@ class RegisterForm extends BasicForm {
             </Row>
             <Formik
               validationSchema={schema}
-              onSubmit={e => {
-                console.log(e);
-              }}
+              onSubmit={this.handleSubmit}
               initialValues={initialValues}
             >
               {({
@@ -421,4 +426,11 @@ class RegisterForm extends BasicForm {
   }
 }
 
-export default RegisterForm;
+const mapDispatchToProps = dispatch => ({
+  registerUser: user => dispatch(userAction.registerUser(user))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(RegisterForm);

@@ -1,6 +1,6 @@
 export default {
-  /* structure: { userId: idStr, firstName: firstNameStr, lastName: lastNameStr, 
-                  dateOfBirth: dobStr, email: emailStr, mobileNum: number, password: pwdStr} 
+  /* structure: { id: idStr, firstName: firstNameStr, lastName: lastNameStr, 
+                  dateOfBirth: dobStr, email: emailStr, mobileNum: numberStr, password: pwdStr} 
    */
-  user: {}
+  user: null
 };

@@ -14,6 +14,17 @@ const LoanInfoFormDiv = styled.div`
   & .form {
     margin-bottom: -30px;
   }
+
+  & .desktopBtn button {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+  }
+
+  & .desktopBtn button:hover {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 1);
+  }
 `;
 
 const incomeTypeError = "Income should be numbers";

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import { ReactComponent as CoupleSVG } from "../assets/couple.svg";
 import { ReactComponent as SingleSVG } from "../assets/single.svg";
@@ -27,10 +28,15 @@ class ChooseCategory extends Component {
   };
 
   render() {
+    const { user } = this.props;
+    const welcomeMsg = !!user
+      ? `Welcome ${user.firstName}! Choose one to get you on board:`
+      : "Welcome! Choose one to get you on board:";
+
     return (
       <ChooseCategoryDiv className="d-flex flex-column justify-content-center flex-grow-1">
         <Row noGutters className="noPadding">
-          <div className="welcomeText my-3">Welcome and choose one</div>
+          <div className="welcomeText my-3">{welcomeMsg}</div>
         </Row>
         <Row noGutters className="noPadding">
           <Col xs={12} md={6}>
@@ -55,4 +61,13 @@ class ChooseCategory extends Component {
   }
 }
 
-export default ChooseCategory;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(ChooseCategory);
