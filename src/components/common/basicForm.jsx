@@ -41,6 +41,7 @@ class BasicForm extends Component {
       pwdStrengthMeter,
       placeholder,
       toolTip,
+      passwordChange,
       required = false
     } = options;
     return (
@@ -55,7 +56,7 @@ class BasicForm extends Component {
           {toolTip && (
             <div className="inputToolTip d-block d-md-none">{toolTip}</div>
           )}
-          {pwdStrengthMeter}
+          {passwordChange && pwdStrengthMeter}
           <InputGroup>
             {prepend && (
               <InputGroup.Prepend>

@@ -15,17 +15,6 @@ const LoanInfoFormDiv = styled.div`
   & .form {
     margin-bottom: -30px;
   }
-
-  & .desktopBtn button {
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.6);
-    transition: 0.3s;
-  }
-
-  & .desktopBtn button:hover {
-    font-size: 30px;
-    color: rgba(0, 0, 0, 1);
-  }
 `;
 
 const incomeTypeError = "Income should be numbers";
@@ -145,17 +134,7 @@ class LoanInfoForm extends BasicForm {
                   ];
                   return (
                     <Form noValidate onSubmit={handleSubmit}>
-                      <Row>
-                        <Col
-                          xs={2}
-                          className="desktopBtn d-none d-lg-flex flex-row justify-content-center"
-                        >
-                          {this.renderCustomButton(
-                            "<<",
-                            () => previousStep(),
-                            "light"
-                          )}
-                        </Col>
+                      <Row className="justify-content-center">
                         <Col xs={12} lg={8} className="form">
                           <SectionWrapper name="About You">
                             <Row className="justify-content-center">
@@ -238,27 +217,17 @@ class LoanInfoForm extends BasicForm {
                               </Col>
                             </Row>
                           </SectionWrapper>
-                        </Col>
-                        <Col
-                          xs={2}
-                          className="desktopBtn d-none d-lg-flex flex-row justify-content-center"
-                        >
-                          {this.renderCustomSubmitButton(
-                            ">>",
-                            "light",
-                            "submit"
-                          )}
-                        </Col>
-                      </Row>
-                      <Row
-                        noGutters
-                        className="justify-content-between d-lg-none mt-4"
-                      >
-                        <Col xs={4} className="mobileBtn">
-                          {this.renderCustomButton("<<", () => previousStep())}
-                        </Col>
-                        <Col xs={4} className="mobileBtn">
-                          {this.renderSubmitButton(">>")}
+                          <Row
+                            noGutters
+                            className="justify-content-between  mt-4"
+                          >
+                            <Col xs={4}>
+                              {this.renderCustomButton("Back", () =>
+                                previousStep()
+                              )}
+                            </Col>
+                            <Col xs={4}>{this.renderSubmitButton("Next")}</Col>
+                          </Row>
                         </Col>
                       </Row>
                     </Form>

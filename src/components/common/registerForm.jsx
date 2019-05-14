@@ -160,6 +160,7 @@ class RegisterForm extends BasicForm {
     target: null,
     showToolTip: false,
     password: "",
+    passwordChange: false,
     passwordErrors: [pwdAlphaDigitError, pwdCharactersNumError, pwdTypeError],
     initialValues: {
       firstName: "",
@@ -196,7 +197,7 @@ class RegisterForm extends BasicForm {
         .filter(ve => ve.path === "password")
         .map(ve => ve.message)
         .filter(error => !error.includes(passwordRequiredError));
-      this.setState({ password, passwordErrors });
+      this.setState({ password, passwordErrors, passwordChange: true });
     });
   };
 
@@ -210,7 +211,13 @@ class RegisterForm extends BasicForm {
   };
 
   render() {
-    const { target, password, passwordErrors, initialValues } = this.state;
+    const {
+      target,
+      password,
+      passwordChange,
+      passwordErrors,
+      initialValues
+    } = this.state;
     const toolTipTargetName = !!target ? target.name : "";
     return (
       <RegisterFormDiv isPasswordValid={passwordErrors.length === 0}>
@@ -323,6 +330,7 @@ class RegisterForm extends BasicForm {
                                 label: "Password",
                                 type: "password",
                                 handleFocus: this.handleFocus,
+                                passwordChange: passwordChange,
                                 pwdStrengthMeter: (
                                   <PasswordStrengthMeter password={password} />
                                 ),
