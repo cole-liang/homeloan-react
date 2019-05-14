@@ -24,7 +24,7 @@ const InputDiv = styled.div`
   /* sm-md(small to middle screen)*/
   @media only screen and (max-width: 767.5px) {
     & .periodSelect select {
-      width: 79px;
+      width: 90px;
       padding: 3px;
     }
   }

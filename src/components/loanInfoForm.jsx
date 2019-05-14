@@ -170,7 +170,7 @@ class LoanInfoForm extends BasicForm {
                                   "yourExpense",
                                   ...commonAttrs,
                                   {
-                                    label: "Your Expense",
+                                    label: "Your Monthly Expense",
                                     prepend: "AUD",
                                     required: true
                                   }
@@ -205,7 +205,7 @@ class LoanInfoForm extends BasicForm {
                                       "partnerExpense",
                                       ...commonAttrs,
                                       {
-                                        label: "Partner's Expense",
+                                        label: "Partner's Monthly Expense",
                                         prepend: "AUD",
                                         required: true
                                       }
