@@ -2,7 +2,6 @@ import * as types from "./actionTypes";
 import * as userAPI from "../services/userService";
 
 export const registerUser = userInfo => {
-  console.log("userAction", userInfo);
   const user = userAPI.registerUser(userInfo);
 
   return {

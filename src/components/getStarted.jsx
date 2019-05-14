@@ -18,14 +18,14 @@ const GetStartedDiv = styled.div`
 
   /* Resolve conflict between Ant Design and Bootstrap*/
   & .steps svg {
-    vertical-align: inherit;
+    vertical-align: baseline;
   }
 
-  @media screen and (max-width: 767.5px) {
+  /* @media screen and (max-width: 767.5px) {
     & .steps svg {
       vertical-align: middle;
     }
-  }
+  } */
 `;
 
 const Step = Steps.Step;
