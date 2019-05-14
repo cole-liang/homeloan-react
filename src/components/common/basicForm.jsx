@@ -20,6 +20,14 @@ const InputDiv = styled.div`
     color: red;
     margin-right: 5px;
   }
+
+  /* sm-md(small to middle screen)*/
+  @media only screen and (max-width: 767.5px) {
+    & .periodSelect select {
+      width: 79px;
+      padding: 3px;
+    }
+  }
 `;
 
 class BasicForm extends Component {
@@ -42,15 +50,18 @@ class BasicForm extends Component {
       placeholder,
       toolTip,
       passwordChange,
-      required = false
+      required = false,
+      periodSelect = null
     } = options;
     return (
       <InputDiv>
         <Form.Group controlId={`${path}Validation`}>
           {label && (
             <Form.Label>
-              {required && <span className="asterisk" />}
-              {label}
+              <div className="labelText">
+                {required && <span className="asterisk" />}
+                {label}
+              </div>
             </Form.Label>
           )}
           {toolTip && (
@@ -76,6 +87,7 @@ class BasicForm extends Component {
               isValid={posFeedback && touched[path] && !errors[path]}
               isInvalid={touched[path] && !!errors[path]}
             />
+            <div className="periodSelect ml-2">{periodSelect}</div>
             {posFeedback && (
               <Form.Control.Feedback>{posFeedback}</Form.Control.Feedback>
             )}
@@ -87,6 +99,16 @@ class BasicForm extends Component {
       </InputDiv>
     );
   };
+
+  renderSelect = (path, handleChange, options) => (
+    <Form.Control as="select" name={path} onChange={handleChange}>
+      {options.map(option => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </Form.Control>
+  );
 
   renderCheckBox = (
     label,

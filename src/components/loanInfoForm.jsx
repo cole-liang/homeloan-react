@@ -44,12 +44,14 @@ let schema = yup.object({
     .typeError(incomeTypeError)
     .moreThan(0, incomeGreaterThanZeroError)
     .required(incomeRequiredError),
+  yourPeriod: yup.string().required(),
   yourExpense: yup
     .number()
     .typeError(expenseTypeError)
     .moreThan(0, expenseGreaterThanZeroError)
     .required(expenseRequiredError),
   partnerIncome: yup.number().notRequired(),
+  partnerPeriod: yup.string().notRequired(),
   partnerExpense: yup.number().notRequired(),
   propertyValue: yup
     .number()
@@ -71,8 +73,10 @@ class LoanInfoForm extends BasicForm {
   state = {
     initialValues: {
       yourIncome: "",
+      yourPeriod: "weekly",
       yourExpense: "",
       partnerIncome: "",
+      partnerPeriod: "weekly",
       partnerExpense: "",
       propertyValue: "",
       deposit: "",
@@ -89,6 +93,7 @@ class LoanInfoForm extends BasicForm {
           .typeError(incomeTypeError)
           .moreThan(0, incomeGreaterThanZeroError)
           .required(incomeRequiredError),
+        partnerPeriod: yup.string().required(),
         partnerExpense: yup
           .number()
           .typeError(expenseTypeError)
@@ -135,21 +140,32 @@ class LoanInfoForm extends BasicForm {
                   return (
                     <Form noValidate onSubmit={handleSubmit}>
                       <Row className="justify-content-center">
-                        <Col xs={12} lg={8} className="form">
+                        <Col xs={12} xl={8} className="form">
                           <SectionWrapper name="About You">
                             <Row className="justify-content-center">
-                              <Col xs={12} md={6}>
+                              <Col xs={12} lg={7}>
                                 {this.renderInput(
                                   "yourIncome",
                                   ...commonAttrs,
                                   {
                                     label: "Your Income",
                                     prepend: "AUD",
-                                    required: true
+                                    required: true,
+                                    periodSelect: this.renderSelect(
+                                      "yourPeriod",
+                                      handleChange,
+                                      [
+                                        "weekly",
+                                        "fortnightly",
+                                        "monthly",
+                                        "quarterly",
+                                        "yearly"
+                                      ]
+                                    )
                                   }
                                 )}
                               </Col>
-                              <Col xs={12} md={6}>
+                              <Col xs={12} lg={5}>
                                 {this.renderInput(
                                   "yourExpense",
                                   ...commonAttrs,
@@ -162,18 +178,29 @@ class LoanInfoForm extends BasicForm {
                               </Col>
                               {isCouple && (
                                 <React.Fragment>
-                                  <Col xs={12} md={6}>
+                                  <Col xs={12} lg={7}>
                                     {this.renderInput(
                                       "partnerIncome",
                                       ...commonAttrs,
                                       {
                                         label: "Partner's Income",
                                         prepend: "AUD",
-                                        required: true
+                                        required: true,
+                                        periodSelect: this.renderSelect(
+                                          "partnerPeriod",
+                                          handleChange,
+                                          [
+                                            "weekly",
+                                            "fortnightly",
+                                            "monthly",
+                                            "quarterly",
+                                            "yearly"
+                                          ]
+                                        )
                                       }
                                     )}
                                   </Col>
-                                  <Col xs={12} md={6}>
+                                  <Col xs={12} lg={5}>
                                     {this.renderInput(
                                       "partnerExpense",
                                       ...commonAttrs,
@@ -221,12 +248,14 @@ class LoanInfoForm extends BasicForm {
                             noGutters
                             className="justify-content-between  mt-4"
                           >
-                            <Col xs={4}>
+                            <Col xs={4} lg={3}>
                               {this.renderCustomButton("Back", () =>
                                 previousStep()
                               )}
                             </Col>
-                            <Col xs={4}>{this.renderSubmitButton("Next")}</Col>
+                            <Col xs={4} lg={3}>
+                              {this.renderSubmitButton("Next")}
+                            </Col>
                           </Row>
                         </Col>
                       </Row>

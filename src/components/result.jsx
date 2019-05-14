@@ -23,7 +23,15 @@ const Result = ({ canHelp, user }) => {
   const warningTip = !!user
     ? `Hey ${user.firstName}, we need more information to help you...`
     : "We need more information to help you...";
-  const warningMsg = "Please give us a call for further assistance.";
+  const warningMsg = (
+    <div>
+      <div>Please give us a call for further assistance.</div>
+      <div>
+        Or you may want to <Link to="/getStarted/1">start over</Link> again to
+        change your info
+      </div>
+    </div>
+  );
 
   return (
     <Col xs={12} className="d-flex align-items-center">

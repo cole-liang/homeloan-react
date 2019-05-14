@@ -36,8 +36,9 @@ const passwordRequiredError = "Password is required";
 const pwdsMatchError = "Passwords must match";
 const passwordConfirmRequiredError = "Password confirm is required";
 
-const mobileNumRegex = /^(4|04)\d{8}$/;
-const mobileNumValidError = "Please enter a valid Australian mobile number";
+const mobileNumRegex = /^(04)\d{8}$/;
+const mobileNumValidError =
+  'Australian mobile number should be 10 digits started with "04"';
 const mobileNumToolTip = "Currently only support Australian number";
 const mobileNumRequiredError = "Mobile number is required";
 

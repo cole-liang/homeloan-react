@@ -52,7 +52,7 @@ const NavigationBar = ({ user }) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <LinkContainer to="/getStarted">
+            <LinkContainer to="/getStarted/1">
               <Nav.Link>Get Started</Nav.Link>
             </LinkContainer>
           </Nav>

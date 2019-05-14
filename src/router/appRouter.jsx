@@ -28,7 +28,7 @@ const AppRouter = () => {
           <Route path="/login" exact component={LoginForm} />
           <Route path="/logout" exact component={Logout} />
           <Route path="/register" exact component={RegisterForm} />
-          <Route path="/getStarted" exact component={GetStarted} />
+          <Route path="/getStarted/:step" exact component={GetStarted} />
           <Route path="/" exact component={HomeLoan} />
           <Redirect to="/notFound" component={NotFound} />
         </Switch>

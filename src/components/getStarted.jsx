@@ -25,45 +25,82 @@ const GetStartedDiv = styled.div`
 const Step = Steps.Step;
 
 class GetStarted extends Component {
-  state = { currentStep: 0, category: "", canHelp: false };
+  state = { category: "", canHelp: false };
+
+  componentDidMount() {
+    if (!["1", "2", "3"].includes(this.props.match.params.step))
+      this.props.history.push("/notFound");
+  }
+
+  setStep = step => {
+    this.props.history.push(`/getStarted/${step + 1}`);
+  };
 
   previousStep = currentStep => {
-    this.setState({ currentStep: currentStep - 1 });
+    this.setStep(currentStep - 1);
   };
 
   nextStep = currentStep => {
-    this.setState({ currentStep: currentStep + 1 });
+    this.setStep(currentStep + 1);
   };
 
-  handleCategory = category => {
-    const { currentStep } = this.state;
+  handleCategory = (category, currentStep) => {
     this.setState({ category });
     this.nextStep(currentStep);
   };
 
-  handleSubmit = data => {
-    const { currentStep } = this.state;
+  handleSubmit = (data, currentStep) => {
     const canHelp = this.calculateProb(data);
     this.setState({ canHelp }, () => {
       this.nextStep(currentStep);
     });
   };
 
+  calculateYearlyIncome = (income, period) => {
+    switch (period) {
+      case "weekly":
+        return income * 52;
+      case "fortnightly":
+        return income * 26;
+      case "monthly":
+        return income * 12;
+      case "quarterly":
+        return income * 4;
+      default:
+        return income;
+    }
+  };
+
   calculateProb = ({
     yourIncome,
+    yourPeriod,
     yourExpense,
     partnerIncome,
+    partnerPeriod,
     partnerExpense,
     propertyValue,
     deposit
   }) => {
-    const x1 =
-      Number.parseFloat(yourExpense) +
-      (partnerExpense ? Number.parseFloat(partnerExpense) : 0);
-    const x2 =
-      Number.parseFloat(yourIncome) +
-      (partnerIncome ? Number.parseFloat(partnerIncome) : 0);
-    const x = x1 / x2;
+    const totalYealyExpense =
+      12 *
+      (Number.parseFloat(yourExpense) +
+        (partnerExpense ? Number.parseFloat(partnerExpense) : 0));
+
+    let yourYearlyIncome = this.calculateYearlyIncome(
+      Number.parseFloat(yourIncome),
+      yourPeriod
+    );
+
+    let partnerYearlyIncome = partnerIncome
+      ? this.calculateYearlyIncome(
+          Number.parseFloat(partnerIncome),
+          partnerPeriod
+        )
+      : 0;
+
+    const totalYealyIncome = yourYearlyIncome + partnerYearlyIncome;
+
+    const x = totalYealyExpense / totalYealyIncome;
 
     const y = Number.parseFloat(deposit) / Number.parseFloat(propertyValue);
 
@@ -71,7 +108,10 @@ class GetStarted extends Component {
   };
 
   render() {
-    const { currentStep, category, canHelp } = this.state;
+    const { category, canHelp } = this.state;
+    const { step } = this.props.match.params;
+    const currentStep = Number.parseInt(step) - 1;
+
     return (
       <GetStartedDiv>
         <Row noGutters className="noPadding justify-content-center py-5 h-100">
@@ -83,13 +123,17 @@ class GetStarted extends Component {
             </Steps>
             <div className="d-flex flex-column justify-content-center flex-grow-1">
               {currentStep === 0 && (
-                <ChooseCategory onClick={this.handleCategory} />
+                <ChooseCategory
+                  onClick={category =>
+                    this.handleCategory(category, currentStep)
+                  }
+                />
               )}
               {currentStep === 1 && (
                 <LoanInfoForm
                   isCouple={category === "couple"}
                   previousStep={() => this.previousStep(currentStep)}
-                  onSubmit={this.handleSubmit}
+                  onSubmit={data => this.handleSubmit(data, currentStep)}
                 />
               )}
               {currentStep === 2 && <Result canHelp={canHelp} />}
