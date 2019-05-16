@@ -99,10 +99,21 @@ const RegisterFormDiv = styled.div`
     margin-bottom: 15px;
   }
 
-  /* display: md(middle screen) */
+  & .datePickerBtn {
+    width: 100%;
+  }
+
+  /* display: xs-md(extra small to middle screen) */
   @media only screen and (max-width: 767.5px) {
     & .form {
       border-radius: 0px;
+    }
+  }
+
+  /* display: md-lg(middle to large screen) */
+  @media only screen and (min-width: 768px) and (max-width: 1199.5px) {
+    & .datePickerBtn {
+      width: auto;
     }
   }
 `;

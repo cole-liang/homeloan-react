@@ -69,7 +69,7 @@ let schema = yup.object({
     .required(postcodeRequiredError)
 });
 
-class LoanInfoForm extends BasicForm {
+export class LoanInfoForm extends BasicForm {
   state = {
     initialValues: {
       yourIncome: "",

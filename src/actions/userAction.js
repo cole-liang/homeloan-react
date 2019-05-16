@@ -2,7 +2,15 @@ import * as types from "./actionTypes";
 import * as userAPI from "../services/userService";
 
 export const registerUser = userInfo => {
-  const user = userAPI.registerUser(userInfo);
+  const { firstName, lastName, email, password, mobileNum, dob } = userInfo;
+  const user = userAPI.registerUser({
+    firstName,
+    lastName,
+    email,
+    password,
+    mobileNum,
+    dob
+  });
 
   return {
     type: types.REGISTER_USER,

@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeLoan Component Test should render HomeLoan component 1`] = `
+<styled.div
+  bannerBg="bannerbg.jpg"
+>
+  <Col
+    as="div"
+    className="h-100 noPadding d-flex flex-column justify-content-center"
+  >
+    <Bootstrap(Row)
+      className="content justify-content-center justify-content-xl-start"
+      noGutters={true}
+    >
+      <Col
+        as="div"
+        className="noPadding"
+        xs={10}
+      >
+        <Bootstrap(Row)
+          noGutters={true}
+        >
+          <Col
+            as="div"
+          >
+            <div
+              className="title"
+            >
+              We are helping people
+            </div>
+            <div
+              className="title"
+            >
+              <strong>
+                just like you!
+              </strong>
+            </div>
+          </Col>
+        </Bootstrap(Row)>
+        <Bootstrap(Row)
+          className="choices my-3"
+          noGutters={true}
+        >
+          <Col
+            as="div"
+            lg={5}
+            md={7}
+            xl={4}
+            xs={10}
+          >
+            <div>
+              I want home loan to
+            </div>
+            <Select
+              choiceTransitionName="zoom"
+              className="selectBox"
+              defaultValue="firstHome"
+              showSearch={false}
+              transitionName="slide-up"
+            >
+              <Option
+                value="firstHome"
+              >
+                Buy my first home
+              </Option>
+              <Option
+                value="invest"
+              >
+                Invest in property
+              </Option>
+            </Select>
+          </Col>
+        </Bootstrap(Row)>
+        <Bootstrap(Row)
+          noGutters={true}
+        >
+          <Link
+            to="/getStarted/1"
+          >
+            <Button
+              active={false}
+              className="getStartedText"
+              disabled={false}
+              type="button"
+              variant="info"
+            >
+              Get Started
+            </Button>
+          </Link>
+        </Bootstrap(Row)>
+      </Col>
+    </Bootstrap(Row)>
+  </Col>
+</styled.div>
+`;

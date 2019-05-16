@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 
-const Result = ({ canHelp, user }) => {
+export const Result = ({ canHelp, user }) => {
   const successTip = !!user
     ? `Congratulation ${user.firstName}, we can help you!`
     : "Congratulation! We can help you!";

@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Result Component Test should render result of NOT being able to help the customers WITH user logged in 1`] = `
+<Col
+  as="div"
+  className="d-flex align-items-center"
+  xs={12}
+>
+  <Bootstrap(Row)
+    className="justify-content-center w-100"
+  >
+    <Col
+      as="div"
+      xs={11}
+    >
+      <Alert
+        description={
+          <div>
+            <div>
+              <div>
+                <div>
+                  Please give us a call for further assistance.
+                </div>
+                <div>
+                  Or you may want to 
+                  <Link
+                    to="/getStarted/1"
+                  >
+                    start over
+                  </Link>
+                   again to change your info
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+        message="Hey Cole, we need more information to help you..."
+        showIcon={true}
+        type="warning"
+      />
+    </Col>
+  </Bootstrap(Row)>
+</Col>
+`;
+
+exports[`Result Component Test should render result of NOT being able to help the customers WITHOUT user logged in 1`] = `
+<Col
+  as="div"
+  className="d-flex align-items-center"
+  xs={12}
+>
+  <Bootstrap(Row)
+    className="justify-content-center w-100"
+  >
+    <Col
+      as="div"
+      xs={11}
+    >
+      <Alert
+        description={
+          <div>
+            <div>
+              <div>
+                <div>
+                  Please give us a call for further assistance.
+                </div>
+                <div>
+                  Or you may want to 
+                  <Link
+                    to="/getStarted/1"
+                  >
+                    start over
+                  </Link>
+                   again to change your info
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+        message="We need more information to help you..."
+        showIcon={true}
+        type="warning"
+      />
+    </Col>
+  </Bootstrap(Row)>
+</Col>
+`;
+
+exports[`Result Component Test should render result of being able to help the customers WITH user logged in 1`] = `
+<Col
+  as="div"
+  className="d-flex align-items-center"
+  xs={12}
+>
+  <Bootstrap(Row)
+    className="justify-content-center w-100"
+  >
+    <Col
+      as="div"
+      xs={11}
+    >
+      <Alert
+        description={
+          <div>
+            Please follow the 
+            <Link
+              to="/"
+            >
+              instructions
+            </Link>
+             to get your home loan.
+          </div>
+        }
+        message="Congratulation Cole, we can help you!"
+        showIcon={true}
+        type="success"
+      />
+    </Col>
+  </Bootstrap(Row)>
+</Col>
+`;
+
+exports[`Result Component Test should render result of being able to help the customers WITHOUT user logged in 1`] = `
+<Col
+  as="div"
+  className="d-flex align-items-center"
+  xs={12}
+>
+  <Bootstrap(Row)
+    className="justify-content-center w-100"
+  >
+    <Col
+      as="div"
+      xs={11}
+    >
+      <Alert
+        description={
+          <div>
+            It is easy to get more home loan for you with just one further step:
+             
+            <Link
+              to="/register"
+            >
+              Click to register
+            </Link>
+          </div>
+        }
+        message="Congratulation! We can help you!"
+        showIcon={true}
+        type="success"
+      />
+    </Col>
+  </Bootstrap(Row)>
+</Col>
+`;

@@ -54,6 +54,7 @@ class DatePicker extends Component {
       <React.Fragment>
         <DatePickerDiv>
           <Button
+            className="datePickerBtn"
             variant="light"
             onKeyUp={e => this.openDatePickerOnEnter(e)}
             onClick={() => this.openDatePicker()}

@@ -21,7 +21,7 @@ const InputDiv = styled.div`
     margin-right: 5px;
   }
 
-  /* sm-md(small to middle screen)*/
+  /* xs-md(extra small to middle screen)*/
   @media only screen and (max-width: 767.5px) {
     & .periodSelect select {
       width: 90px;
@@ -87,7 +87,9 @@ class BasicForm extends Component {
               isValid={posFeedback && touched[path] && !errors[path]}
               isInvalid={touched[path] && !!errors[path]}
             />
-            <div className="periodSelect ml-2">{periodSelect}</div>
+            {periodSelect && (
+              <div className="periodSelect ml-2">{periodSelect}</div>
+            )}
             {posFeedback && (
               <Form.Control.Feedback>{posFeedback}</Form.Control.Feedback>
             )}

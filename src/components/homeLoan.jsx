@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { Select } from "antd";
 import { Link } from "react-router-dom";
@@ -39,7 +39,7 @@ const HomeLoanDiv = styled.div`
     font-size: 20px;
   }
 
-  /* display: lg(large screen) */
+  /* display: xs-lg(extra small to large screen) */
   @media only screen and (max-width: 1024px) {
     & .content {
       padding: 20px;
@@ -84,50 +84,44 @@ const HomeLoanDiv = styled.div`
   }
 `;
 
-class HomeLoan extends Component {
-  state = {};
-
-  render() {
-    return (
-      <HomeLoanDiv bannerBg={bannerBg}>
-        <Col className="h-100 noPadding d-flex flex-column justify-content-center">
-          <Row
-            noGutters
-            className="content justify-content-center justify-content-xl-start"
-          >
-            <Col xs={10} className="noPadding">
-              <Row noGutters>
-                <Col>
-                  <div className="title">We are helping people</div>
-                  <div className="title">
-                    <strong>just like you!</strong>
-                  </div>
-                </Col>
-              </Row>
-              <Row noGutters className="choices my-3">
-                <Col xs={12} md={6} xl={4}>
-                  <div>I'm looking to</div>
-                  <Select defaultValue="firstHome" className="selectBox">
-                    <Option value="firstHome">
-                      Buy or build my first home
-                    </Option>
-                    <Option value="invest">Invest in property</Option>
-                  </Select>
-                </Col>
-              </Row>
-              <Row noGutters>
-                <Link to="/getStarted/1">
-                  <Button variant="info" className="getStartedText">
-                    Get Started
-                  </Button>
-                </Link>
-              </Row>
-            </Col>
-          </Row>
-        </Col>
-      </HomeLoanDiv>
-    );
-  }
-}
+export const HomeLoan = () => {
+  return (
+    <HomeLoanDiv bannerBg={bannerBg}>
+      <Col className="h-100 noPadding d-flex flex-column justify-content-center">
+        <Row
+          noGutters
+          className="content justify-content-center justify-content-xl-start"
+        >
+          <Col xs={10} className="noPadding">
+            <Row noGutters>
+              <Col>
+                <div className="title">We are helping people</div>
+                <div className="title">
+                  <strong>just like you!</strong>
+                </div>
+              </Col>
+            </Row>
+            <Row noGutters className="choices my-3">
+              <Col xs={10} md={7} lg={5} xl={4}>
+                <div>I want home loan to</div>
+                <Select defaultValue="firstHome" className="selectBox">
+                  <Option value="firstHome">Buy my first home</Option>
+                  <Option value="invest">Invest in property</Option>
+                </Select>
+              </Col>
+            </Row>
+            <Row noGutters>
+              <Link to="/getStarted/1">
+                <Button variant="info" className="getStartedText">
+                  Get Started
+                </Button>
+              </Link>
+            </Row>
+          </Col>
+        </Row>
+      </Col>
+    </HomeLoanDiv>
+  );
+};
 
 export default HomeLoan;

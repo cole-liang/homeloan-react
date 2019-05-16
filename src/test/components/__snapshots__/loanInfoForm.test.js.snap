@@ -1,0 +1,363 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoanInfoForm Component Test should render LoanInfoForm component 1`] = `
+<styled.div>
+  <Col
+    as="div"
+    className="m-auto noPadding"
+    md={11}
+    xs={12}
+  >
+    <Bootstrap(Row)
+      className="justify-content-between"
+    >
+      <Col
+        as="div"
+        xs={12}
+      >
+        <Formik
+          enableReinitialize={false}
+          initialValues={
+            Object {
+              "deposit": "",
+              "partnerExpense": "",
+              "partnerIncome": "",
+              "partnerPeriod": "weekly",
+              "postcode": "",
+              "propertyValue": "",
+              "yourExpense": "",
+              "yourIncome": "",
+              "yourPeriod": "weekly",
+            }
+          }
+          isInitialValid={false}
+          onSubmit={[Function]}
+          validateOnBlur={true}
+          validateOnChange={true}
+          validationSchema={
+            ObjectSchema {
+              "_blacklist": RefSet {
+                "list": Set {},
+                "refs": Map {},
+              },
+              "_conditions": Array [],
+              "_defaultDefault": [Function],
+              "_deps": Array [],
+              "_excludedEdges": Array [],
+              "_exclusive": Object {},
+              "_mutate": undefined,
+              "_nodes": Array [
+                "postcode",
+                "deposit",
+                "propertyValue",
+                "partnerExpense",
+                "partnerPeriod",
+                "partnerIncome",
+                "yourExpense",
+                "yourPeriod",
+                "yourIncome",
+              ],
+              "_options": Object {
+                "abortEarly": true,
+                "recursive": true,
+              },
+              "_type": "object",
+              "_typeError": [Function],
+              "_whitelist": RefSet {
+                "list": Set {},
+                "refs": Map {},
+              },
+              "fields": Object {
+                "deposit": NumberSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "min": true,
+                    "required": true,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "number",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+                "partnerExpense": NumberSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "min": true,
+                    "required": true,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "number",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+                "partnerIncome": NumberSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "min": true,
+                    "required": true,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "number",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+                "partnerPeriod": StringSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "required": true,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "string",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+                "postcode": StringSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "required": true,
+                    "undefined": false,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "string",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+                "propertyValue": NumberSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "min": true,
+                    "required": true,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "number",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+                "yourExpense": NumberSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "min": true,
+                    "required": true,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "number",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+                "yourIncome": NumberSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "min": true,
+                    "required": true,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "number",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+                "yourPeriod": StringSchema {
+                  "_blacklist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "_conditions": Array [],
+                  "_deps": Array [],
+                  "_exclusive": Object {
+                    "required": true,
+                  },
+                  "_mutate": undefined,
+                  "_options": Object {
+                    "abortEarly": true,
+                    "recursive": true,
+                  },
+                  "_type": "string",
+                  "_typeError": [Function],
+                  "_whitelist": RefSet {
+                    "list": Set {},
+                    "refs": Map {},
+                  },
+                  "tests": Array [
+                    [Function],
+                  ],
+                  "transforms": Array [
+                    [Function],
+                  ],
+                },
+              },
+              "tests": Array [],
+              "transforms": Array [
+                [Function],
+              ],
+            }
+          }
+        >
+          <Component />
+        </Formik>
+      </Col>
+    </Bootstrap(Row)>
+  </Col>
+</styled.div>
+`;
+
+exports[`LoanInfoForm Component Test should render LoanInfoForm component with errors with no data 1`] = `
+<input
+  className="form-control"
+  name="yourIncome"
+  onBlur={[Function]}
+  onChange={[Function]}
+  placeholder="Your Income"
+  type="text"
+  value=""
+/>
+`;

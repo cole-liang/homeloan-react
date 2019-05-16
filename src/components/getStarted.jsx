@@ -30,7 +30,7 @@ const GetStartedDiv = styled.div`
 
 const Step = Steps.Step;
 
-class GetStarted extends Component {
+export class GetStarted extends Component {
   state = { category: "", canHelp: false };
 
   componentDidMount() {

@@ -23,7 +23,7 @@ const ChooseCategoryDiv = styled.div`
   }
 `;
 
-class ChooseCategory extends Component {
+export class ChooseCategory extends Component {
   handleClick = category => {
     this.props.onClick(category);
   };
