@@ -6,23 +6,27 @@ import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 
 export const Result = ({ canHelp, user }) => {
-  const successTip = !!user
-    ? `Congratulation ${user.firstName}, we can help you!`
-    : "Congratulation! We can help you!";
-  const successMsg = !!user ? (
-    <div>
-      Please follow the <Link to="/">instructions</Link> to get your home loan.
-    </div>
-  ) : (
-    <div>
-      It is easy to get more home loan for you with just one further step:{" "}
-      <Link to="/register">Click to register</Link>
-    </div>
-  );
+  const successTip =
+    !!user && !user.error
+      ? `Congratulation ${user.firstName}, we can help you!`
+      : "Congratulation! We can help you!";
+  const successMsg =
+    !!user && !user.error ? (
+      <div>
+        Please follow the <Link to="/">instructions</Link> to get your home
+        loan.
+      </div>
+    ) : (
+      <div>
+        It is easy to get more home loan for you with just one further step:{" "}
+        <Link to="/register">Click to register</Link>
+      </div>
+    );
 
-  const warningTip = !!user
-    ? `Hey ${user.firstName}, we need more information to help you...`
-    : "We need more information to help you...";
+  const warningTip =
+    !!user && !user.error
+      ? `Hey ${user.firstName}, we need more information to help you...`
+      : "We need more information to help you...";
   const warningMsg = (
     <div>
       <div>Please give us a call for further assistance.</div>

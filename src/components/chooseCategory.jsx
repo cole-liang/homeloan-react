@@ -30,9 +30,10 @@ export class ChooseCategory extends Component {
 
   render() {
     const { user } = this.props;
-    const welcomeMsg = !!user
-      ? `Welcome ${user.firstName}! Choose one to get you on board:`
-      : "Welcome! Choose one to get you on board:";
+    const welcomeMsg =
+      !!user && !user.error
+        ? `Welcome ${user.firstName}! Choose one to get you on board:`
+        : "Welcome! Choose one to get you on board:";
 
     return (
       <ChooseCategoryDiv className="d-flex flex-column justify-content-center flex-grow-1">
