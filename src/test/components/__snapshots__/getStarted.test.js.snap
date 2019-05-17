@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GetStarted Component Test Render ChooseCategory component should render ChooseCategory component if currentStep is 1 1`] = `
+<styled.div>
+  <Bootstrap(Row)
+    className="noPadding justify-content-center py-5 h-100"
+    noGutters={true}
+  >
+    <Col
+      as="div"
+      className="d-flex flex-column"
+      md={9}
+      xs={11}
+    >
+      <Steps
+        className="steps mb-3"
+        current={0}
+      >
+        <Step
+          key="choose"
+          title="Choose"
+        />
+        <Step
+          key="basicInfo"
+          title="Basic Info"
+        />
+        <Step
+          key="result"
+          title="Result"
+        />
+      </Steps>
+      <div
+        className="d-flex flex-column justify-content-center flex-grow-1"
+      >
+        <ConnectFunction
+          onClick={[Function]}
+        />
+      </div>
+    </Col>
+  </Bootstrap(Row)>
+</styled.div>
+`;
+
+exports[`GetStarted Component Test Render LoanInfoForm component should render LoanInfoForm component if currentStep is 2 1`] = `
+<styled.div>
+  <Bootstrap(Row)
+    className="noPadding justify-content-center py-5 h-100"
+    noGutters={true}
+  >
+    <Col
+      as="div"
+      className="d-flex flex-column"
+      md={9}
+      xs={11}
+    >
+      <Steps
+        className="steps mb-3"
+        current={1}
+      >
+        <Step
+          key="choose"
+          title="Choose"
+        />
+        <Step
+          key="basicInfo"
+          title="Basic Info"
+        />
+        <Step
+          key="result"
+          title="Result"
+        />
+      </Steps>
+      <div
+        className="d-flex flex-column justify-content-center flex-grow-1"
+      >
+        <LoanInfoForm
+          isCouple={false}
+          onSubmit={[Function]}
+          previousStep={[Function]}
+        />
+      </div>
+    </Col>
+  </Bootstrap(Row)>
+</styled.div>
+`;
+
+exports[`GetStarted Component Test Render Result component should render Result component if currentStep is 3 1`] = `
+<styled.div>
+  <Bootstrap(Row)
+    className="noPadding justify-content-center py-5 h-100"
+    noGutters={true}
+  >
+    <Col
+      as="div"
+      className="d-flex flex-column"
+      md={9}
+      xs={11}
+    >
+      <Steps
+        className="steps mb-3"
+        current={2}
+      >
+        <Step
+          key="choose"
+          title="Choose"
+        />
+        <Step
+          key="basicInfo"
+          title="Basic Info"
+        />
+        <Step
+          key="result"
+          title="Result"
+        />
+      </Steps>
+      <div
+        className="d-flex flex-column justify-content-center flex-grow-1"
+      >
+        <ConnectFunction
+          canHelp={false}
+        />
+      </div>
+    </Col>
+  </Bootstrap(Row)>
+</styled.div>
+`;
+
+exports[`GetStarted Component Test should render GetStarted component with wrong step 1`] = `
+<styled.div>
+  <Bootstrap(Row)
+    className="noPadding justify-content-center py-5 h-100"
+    noGutters={true}
+  >
+    <Col
+      as="div"
+      className="d-flex flex-column"
+      md={9}
+      xs={11}
+    >
+      <Steps
+        className="steps mb-3"
+        current={-1}
+      >
+        <Step
+          key="choose"
+          title="Choose"
+        />
+        <Step
+          key="basicInfo"
+          title="Basic Info"
+        />
+        <Step
+          key="result"
+          title="Result"
+        />
+      </Steps>
+      <div
+        className="d-flex flex-column justify-content-center flex-grow-1"
+      />
+    </Col>
+  </Bootstrap(Row)>
+</styled.div>
+`;

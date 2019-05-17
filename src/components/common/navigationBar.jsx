@@ -39,7 +39,7 @@ const NavDiv = styled.div`
   }
 `;
 
-const NavigationBar = ({ user }) => {
+export const NavigationBar = ({ user }) => {
   return (
     <NavDiv>
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">

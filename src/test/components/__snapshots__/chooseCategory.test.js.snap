@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChooseCategory Component Test should render ChooseCategory component WITH user logged in 1`] = `
+<styled.div
+  className="d-flex flex-column justify-content-center flex-grow-1"
+>
+  <Bootstrap(Row)
+    className="noPadding"
+    noGutters={true}
+  >
+    <div
+      className="welcomeText my-3"
+    >
+      Welcome Cole! Choose one to get you on board:
+    </div>
+  </Bootstrap(Row)>
+  <Bootstrap(Row)
+    className="noPadding"
+    noGutters={true}
+  >
+    <Col
+      as="div"
+      md={6}
+      xs={12}
+    >
+      <Bootstrap(Row)
+        className="justify-content-center my-4"
+        noGutters={true}
+      >
+        <div
+          id="singleIcon"
+          onClick={[Function]}
+        >
+          <ForwardRef
+            className="singleSvg"
+          />
+          <div
+            className="iconDesc text-center"
+          >
+            Single
+          </div>
+        </div>
+      </Bootstrap(Row)>
+    </Col>
+    <Col
+      as="div"
+      md={6}
+      xs={12}
+    >
+      <Bootstrap(Row)
+        className="justify-content-center my-4"
+        noGutters={true}
+      >
+        <div
+          id="coupleIcon"
+          onClick={[Function]}
+        >
+          <ForwardRef
+            className="coupleSvg"
+          />
+          <div
+            className="iconDesc text-center"
+          >
+            Couple
+          </div>
+        </div>
+      </Bootstrap(Row)>
+    </Col>
+  </Bootstrap(Row)>
+</styled.div>
+`;
+
+exports[`ChooseCategory Component Test should render ChooseCategory component WITHOUT user logged in 1`] = `
+<styled.div
+  className="d-flex flex-column justify-content-center flex-grow-1"
+>
+  <Bootstrap(Row)
+    className="noPadding"
+    noGutters={true}
+  >
+    <div
+      className="welcomeText my-3"
+    >
+      Welcome! Choose one to get you on board:
+    </div>
+  </Bootstrap(Row)>
+  <Bootstrap(Row)
+    className="noPadding"
+    noGutters={true}
+  >
+    <Col
+      as="div"
+      md={6}
+      xs={12}
+    >
+      <Bootstrap(Row)
+        className="justify-content-center my-4"
+        noGutters={true}
+      >
+        <div
+          id="singleIcon"
+          onClick={[Function]}
+        >
+          <ForwardRef
+            className="singleSvg"
+          />
+          <div
+            className="iconDesc text-center"
+          >
+            Single
+          </div>
+        </div>
+      </Bootstrap(Row)>
+    </Col>
+    <Col
+      as="div"
+      md={6}
+      xs={12}
+    >
+      <Bootstrap(Row)
+        className="justify-content-center my-4"
+        noGutters={true}
+      >
+        <div
+          id="coupleIcon"
+          onClick={[Function]}
+        >
+          <ForwardRef
+            className="coupleSvg"
+          />
+          <div
+            className="iconDesc text-center"
+          >
+            Couple
+          </div>
+        </div>
+      </Bootstrap(Row)>
+    </Col>
+  </Bootstrap(Row)>
+</styled.div>
+`;

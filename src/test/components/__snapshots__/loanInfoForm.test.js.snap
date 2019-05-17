@@ -349,15 +349,3 @@ exports[`LoanInfoForm Component Test should render LoanInfoForm component 1`] = 
   </Col>
 </styled.div>
 `;
-
-exports[`LoanInfoForm Component Test should render LoanInfoForm component with errors with no data 1`] = `
-<input
-  className="form-control"
-  name="yourIncome"
-  onBlur={[Function]}
-  onChange={[Function]}
-  placeholder="Your Income"
-  type="text"
-  value=""
-/>
-`;

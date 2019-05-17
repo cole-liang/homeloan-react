@@ -1,5 +1,14 @@
 export default [
   {
+    id: "5wet3k556jk3jk",
+    firstName: "Cole",
+    lastName: "Liang",
+    email: "a@a.com",
+    password: "123qwe",
+    dateOfBirth: "22/11/1992",
+    mobileNum: "0412345678"
+  },
+  {
     firstName: "Cole",
     lastName: "Liang",
     email: "cole.liang@outlook.com",

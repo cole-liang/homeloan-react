@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound Component Test should render NotFound component 1`] = `
+<styled.div>
+  <Bootstrap(Row)
+    className="noPadding notFoundBg flex-grow-1 justify-content-center align-items-center"
+    noGutters={true}
+  >
+    <div>
+      <div
+        className="notFoundText"
+      >
+        404
+      </div>
+      <div
+        className="notFoundDesc mb-5 px-2"
+      >
+        Oops, your page is magically gone, please try again.
+      </div>
+    </div>
+  </Bootstrap(Row)>
+</styled.div>
+`;

@@ -20,12 +20,6 @@ const GetStartedDiv = styled.div`
   & .steps svg {
     vertical-align: baseline;
   }
-
-  /* @media screen and (max-width: 767.5px) {
-    & .steps svg {
-      vertical-align: middle;
-    }
-  } */
 `;
 
 const Step = Steps.Step;

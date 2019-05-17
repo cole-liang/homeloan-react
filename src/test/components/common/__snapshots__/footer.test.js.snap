@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Component Test should render Footer component 1`] = `
+<styled.footer>
+  <Bootstrap(Row)
+    className="footerAbove d-flex justify-content-center justify-content-md-between"
+  >
+    <Col
+      as="div"
+      className="footerAbout order-1 order-md-0 d-flex align-items-center justify-content-md-start justify-content-center noPaddingAndMargin"
+      md={6}
+      xs={12}
+    >
+      <Link
+        to="/"
+      >
+        <img
+          alt="Zinq Logo"
+          className="companyBrand"
+          src="http://www.zinqsolutions.com.au/wp-content/uploads/2018/12/zinq-comingsoon-logo2.png"
+        />
+      </Link>
+      <ul
+        className="footerNav"
+      >
+        <li>
+          Who We Are
+        </li>
+        <li>
+          Contact Us
+        </li>
+        <li>
+          Careers
+        </li>
+      </ul>
+    </Col>
+    <Col
+      as="div"
+      className="d-flex order-0 order-md-1 justify-content-center justify-content-md-end noPaddingAndMargin"
+      md={2}
+      xs={12}
+    >
+      <ul
+        className="footerSocial d-flex align-items-center noPaddingAndMargin"
+      >
+        <li>
+          <i
+            className="fa fa-twitter-square"
+          />
+        </li>
+        <li>
+          <i
+            className="fa fa-facebook-square"
+          />
+        </li>
+        <li>
+          <i
+            className="fa fa-google-plus-square"
+          />
+        </li>
+        <li>
+          <i
+            className="fa fa-instagram"
+          />
+        </li>
+      </ul>
+    </Col>
+  </Bootstrap(Row)>
+  <Bootstrap(Row)
+    className="footerBelow d-flex justify-content-between"
+  >
+    <Col
+      as="div"
+      className="d-flex justify-content-center justify-content-md-start noPaddingAndMargin"
+      md={6}
+      xs={12}
+    >
+      <span>
+        Copyright 
+        <i
+          className="fa fa-copyright"
+        />
+         2019
+         
+        Zinq Solutions
+         All Rights Reserved.
+      </span>
+    </Col>
+    <Col
+      as="div"
+      className="d-flex justify-content-center justify-content-md-end noPaddingAndMargin"
+      md={6}
+      xs={12}
+    >
+      <ul
+        className="legalList noPaddingAndMargin"
+      >
+        <li>
+          Privacy Policy
+          <span
+            className="dot"
+          />
+        </li>
+        <li>
+          Terms of Use
+          <span
+            className="dot"
+          />
+        </li>
+        <li>
+          Site Map
+        </li>
+      </ul>
+    </Col>
+  </Bootstrap(Row)>
+</styled.footer>
+`;

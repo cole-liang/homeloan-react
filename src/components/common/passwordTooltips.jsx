@@ -96,7 +96,7 @@ const PasswordToolTips = ({ possibleErrors, passwordErrors }) => {
           className="pwdToolTipRow justify-content-between"
         >
           <span id={`${error}Text`}>{possibleErrors[error]}</span>
-          <span id={`${error}Icon`} className="">
+          <span id={`${error}Icon`}>
             <i className="fa fa-check-circle" />
             <i className="fa fa-times-circle" />
           </span>

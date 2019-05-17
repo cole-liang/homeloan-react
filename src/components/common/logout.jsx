@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import * as userAction from "../../actions/userAction";
 
-class Logout extends Component {
+export class Logout extends Component {
   componentDidMount() {
     this.props.logout();
     this.props.history.push("/");

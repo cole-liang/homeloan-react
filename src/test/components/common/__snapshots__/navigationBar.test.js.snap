@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationBar Component Test should render NavigationBar component WITH user logged in 1`] = `
+<styled.div>
+  <Bootstrap(undefined)
+    bg="dark"
+    collapseOnSelect={true}
+    expand="md"
+    variant="dark"
+  >
+    <withRouter(LinkContainer)
+      to="/"
+    >
+      <NavbarBrand>
+        <img
+          alt="Zinq Logo"
+          src="http://www.zinqsolutions.com.au/wp-content/uploads/2018/12/zinq-comingsoon-logo2.png"
+        />
+        Zinq Solutions
+      </NavbarBrand>
+    </withRouter(LinkContainer)>
+    <NavbarToggle
+      aria-controls="responsive-navbar-nav"
+      as="button"
+      label="Toggle navigation"
+    />
+    <NavbarCollapse
+      id="responsive-navbar-nav"
+    >
+      <Nav
+        as="div"
+        className="mr-auto"
+        fill={false}
+        justify={false}
+      >
+        <withRouter(LinkContainer)
+          to="/getStarted/1"
+        >
+          <NavLink
+            as={[Function]}
+            disabled={false}
+          >
+            Get Started
+          </NavLink>
+        </withRouter(LinkContainer)>
+      </Nav>
+      <Nav
+        as="div"
+        fill={false}
+        justify={false}
+      >
+        <div
+          className="navDropdown mr-md-2"
+        >
+          <NavDropdown
+            id="basic-nav-dropdown"
+            title={
+              <React.Fragment>
+                <span
+                  className="d-none d-md-flex align-items-center"
+                >
+                  <div
+                    className="avatar"
+                  />
+                  <span>
+                    Cole
+                  </span>
+                </span>
+                <span
+                  className="d-block d-md-none"
+                >
+                  <span>
+                    Cole Liang
+                  </span>
+                </span>
+              </React.Fragment>
+            }
+          >
+            <DropdownItem
+              as={[Function]}
+              disabled={false}
+              href="/logout"
+            >
+              Logout
+            </DropdownItem>
+          </NavDropdown>
+        </div>
+      </Nav>
+    </NavbarCollapse>
+  </Bootstrap(undefined)>
+</styled.div>
+`;
+
+exports[`NavigationBar Component Test should render NavigationBar component WITH user login error 1`] = `
+<styled.div>
+  <Bootstrap(undefined)
+    bg="dark"
+    collapseOnSelect={true}
+    expand="md"
+    variant="dark"
+  >
+    <withRouter(LinkContainer)
+      to="/"
+    >
+      <NavbarBrand>
+        <img
+          alt="Zinq Logo"
+          src="http://www.zinqsolutions.com.au/wp-content/uploads/2018/12/zinq-comingsoon-logo2.png"
+        />
+        Zinq Solutions
+      </NavbarBrand>
+    </withRouter(LinkContainer)>
+    <NavbarToggle
+      aria-controls="responsive-navbar-nav"
+      as="button"
+      label="Toggle navigation"
+    />
+    <NavbarCollapse
+      id="responsive-navbar-nav"
+    >
+      <Nav
+        as="div"
+        className="mr-auto"
+        fill={false}
+        justify={false}
+      >
+        <withRouter(LinkContainer)
+          to="/getStarted/1"
+        >
+          <NavLink
+            as={[Function]}
+            disabled={false}
+          >
+            Get Started
+          </NavLink>
+        </withRouter(LinkContainer)>
+      </Nav>
+      <Nav
+        as="div"
+        fill={false}
+        justify={false}
+      >
+        <withRouter(LinkContainer)
+          to="/register"
+        >
+          <NavLink
+            as={[Function]}
+            disabled={false}
+          >
+            Register
+          </NavLink>
+        </withRouter(LinkContainer)>
+        <withRouter(LinkContainer)
+          to="/login"
+        >
+          <NavLink
+            as={[Function]}
+            disabled={false}
+          >
+            Login
+          </NavLink>
+        </withRouter(LinkContainer)>
+      </Nav>
+    </NavbarCollapse>
+  </Bootstrap(undefined)>
+</styled.div>
+`;
+
+exports[`NavigationBar Component Test should render NavigationBar component WITHOUT user logged in 1`] = `
+<styled.div>
+  <Bootstrap(undefined)
+    bg="dark"
+    collapseOnSelect={true}
+    expand="md"
+    variant="dark"
+  >
+    <withRouter(LinkContainer)
+      to="/"
+    >
+      <NavbarBrand>
+        <img
+          alt="Zinq Logo"
+          src="http://www.zinqsolutions.com.au/wp-content/uploads/2018/12/zinq-comingsoon-logo2.png"
+        />
+        Zinq Solutions
+      </NavbarBrand>
+    </withRouter(LinkContainer)>
+    <NavbarToggle
+      aria-controls="responsive-navbar-nav"
+      as="button"
+      label="Toggle navigation"
+    />
+    <NavbarCollapse
+      id="responsive-navbar-nav"
+    >
+      <Nav
+        as="div"
+        className="mr-auto"
+        fill={false}
+        justify={false}
+      >
+        <withRouter(LinkContainer)
+          to="/getStarted/1"
+        >
+          <NavLink
+            as={[Function]}
+            disabled={false}
+          >
+            Get Started
+          </NavLink>
+        </withRouter(LinkContainer)>
+      </Nav>
+      <Nav
+        as="div"
+        fill={false}
+        justify={false}
+      >
+        <withRouter(LinkContainer)
+          to="/register"
+        >
+          <NavLink
+            as={[Function]}
+            disabled={false}
+          >
+            Register
+          </NavLink>
+        </withRouter(LinkContainer)>
+        <withRouter(LinkContainer)
+          to="/login"
+        >
+          <NavLink
+            as={[Function]}
+            disabled={false}
+          >
+            Login
+          </NavLink>
+        </withRouter(LinkContainer)>
+      </Nav>
+    </NavbarCollapse>
+  </Bootstrap(undefined)>
+</styled.div>
+`;

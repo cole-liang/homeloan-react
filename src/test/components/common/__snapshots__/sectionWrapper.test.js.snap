@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionWrapper Component Test should render SectionWrapper component 1`] = `
+<styled.div>
+  <span
+    className="wrapperName"
+  >
+    Test Section
+  </span>
+  <div
+    className="wrapper"
+  >
+    <div>
+      Test message
+    </div>
+  </div>
+</styled.div>
+`;

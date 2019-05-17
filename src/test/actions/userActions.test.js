@@ -5,9 +5,8 @@ import testUsers from "../fixture/users";
 import * as types from "../../actions/actionTypes";
 
 describe("userActions", () => {
-  const testUser = testUsers[0];
-  const storedUsers = require("../../services/fakeUsers.json");
-  const storedUser = storedUsers[0];
+  const testUser = testUsers[1];
+  const storedUser = testUsers[0];
 
   it("loginUser should create a LOGIN_USER action WITHOUT ERROR", () => {
     const data = { email: storedUser.email, password: storedUser.password };
